@@ -1,0 +1,112 @@
+<scene formatVersion="1.0.0">
+  <nodes>
+    <node name="Cube.001">
+      <position x="0.000000" y="0.000000" z="-2.400000"/>
+      <quaternion x="0.000000" y="0.000000" z="-0.000000" w="1.000000"/>
+      <scale x="1.000000" y="1.000000" z="1.000000"/>
+      <entity name="Cube.001" meshFile="Cube.002.mesh"/>
+    </node>
+    <node name="bridge">
+      <position x="0.000000" y="0.000000" z="-0.000000"/>
+      <quaternion x="-0.500000" y="0.500000" z="-0.500000" w="0.500000"/>
+      <scale x="1.000000" y="1.000000" z="1.000000"/>
+      <entity name="bridge" meshFile="Circle.008.mesh"/>
+    </node>
+    <node name="bridge.001">
+      <position x="0.000000" y="0.000000" z="-0.000000"/>
+      <quaternion x="-0.500000" y="0.500000" z="-0.500000" w="0.500000"/>
+      <scale x="1.000000" y="1.000000" z="1.000000"/>
+      <entity name="bridge.001" meshFile="Circle.mesh"/>
+    </node>
+    <node name="Cube.002">
+      <position x="0.000000" y="2.000000" z="-5.200000"/>
+      <quaternion x="0.000000" y="0.000000" z="-0.000000" w="1.000000"/>
+      <scale x="5.000000" y="5.000000" z="5.000000"/>
+      <entity name="Cube.002" meshFile="Cube.006.mesh"/>
+    </node>
+    <node name="Camera">
+      <position x="20.481133" y="16.343666" z="8.507641"/>
+      <quaternion x="-0.212056" y="0.386910" z="0.085793" w="0.893293"/>
+      <scale x="1.000000" y="1.000000" z="1.000000"/>
+      <camera name="Camera" fov="37.849289" projectionType="perspective">
+      </camera>
+    </node>
+    <node name="Circle.001">
+      <position x="0.000000" y="-0.944000" z="-0.400000"/>
+      <quaternion x="0.707107" y="0.000000" z="-0.000000" w="0.707107"/>
+      <scale x="0.105000" y="0.105000" z="0.105000"/>
+      <entity name="Circle.001" meshFile="Circle.007.mesh"/>
+    </node>
+    <node name="Circle.002">
+      <position x="0.000000" y="-0.993000" z="-0.400000"/>
+      <quaternion x="0.707107" y="0.000000" z="-0.000000" w="0.707107"/>
+      <scale x="0.700000" y="0.700000" z="0.700000"/>
+      <entity name="Circle.002" meshFile="Circle.002.mesh"/>
+    </node>
+    <node name="BridgeBorder1">
+      <position x="0.000000" y="13.500000" z="0.500000"/>
+      <quaternion x="0.000000" y="0.000000" z="-0.000000" w="1.000000"/>
+      <scale x="1.000000" y="1.000000" z="1.000000"/>
+      <entity name="BridgeBorder1" meshFile="Cube.mesh"/>
+    </node>
+    <node name="Cube.003">
+      <position x="-12.000000" y="14.000000" z="-5.000000"/>
+      <quaternion x="0.000000" y="0.000000" z="-0.000000" w="1.000000"/>
+      <scale x="1.000000" y="1.000000" z="1.000000"/>
+      <entity name="Cube.003" meshFile="Cube.004.mesh"/>
+    </node>
+    <node name="Roof">
+      <position x="0.000000" y="0.000000" z="-2.000000"/>
+      <quaternion x="0.000000" y="0.000000" z="-0.000000" w="1.000000"/>
+      <scale x="1.000000" y="1.000000" z="1.000000"/>
+      <entity name="Roof" meshFile="Cube.001.mesh"/>
+    </node>
+    <node name="BridgeBorder">
+      <position x="0.000000" y="13.500000" z="-10.500000"/>
+      <quaternion x="0.000000" y="0.000000" z="-0.000000" w="1.000000"/>
+      <scale x="1.000000" y="1.000000" z="-1.000000"/>
+      <entity name="BridgeBorder" meshFile="Cube.003.mesh"/>
+    </node>
+    <node name="Lamp">
+      <position x="-3.923755" y="14.903862" z="16.994547"/>
+      <quaternion x="-0.284166" y="0.726942" z="0.342034" w="0.523275"/>
+      <scale x="1.000000" y="1.000000" z="1.000000"/>
+      <light name="Spot" type="point">
+        <colourDiffuse r="1.000000" g="1.000000" b="1.000000"/>
+        <colourSpecular r="1.000000" g="1.000000" b="1.000000"/>
+        <lightAttenuation range="5000.0" constant="1.000000" linear="0.033333" quadratic="0.000000"/>
+      </light>
+    </node>
+    <node name="Cube">
+      <position x="0.000000" y="0.000000" z="-0.000000"/>
+      <quaternion x="0.000000" y="0.000000" z="-0.000000" w="1.000000"/>
+      <scale x="1.000000" y="1.000000" z="1.000000"/>
+      <entity name="Cube" meshFile="Cube.005.mesh"/>
+    </node>
+    <node name="Circle">
+      <position x="0.000000" y="-0.993000" z="-0.400000"/>
+      <quaternion x="0.707107" y="0.000000" z="-0.000000" w="0.707107"/>
+      <scale x="0.210000" y="0.210000" z="0.210000"/>
+      <entity name="Circle" meshFile="Circle.005.mesh"/>
+    </node>
+    <node name="Lamp.001">
+      <position x="6.076245" y="24.903862" z="-14.005453"/>
+      <quaternion x="-0.284166" y="0.726942" z="0.342034" w="0.523275"/>
+      <scale x="1.000000" y="1.000000" z="1.000000"/>
+      <light name="Spot.001" type="point">
+        <colourDiffuse r="1.000000" g="1.000000" b="1.000000"/>
+        <colourSpecular r="1.000000" g="1.000000" b="1.000000"/>
+        <lightAttenuation range="5000.0" constant="1.000000" linear="0.033333" quadratic="0.000000"/>
+      </light>
+    </node>
+  </nodes>
+  <externals>
+    <item type="material">
+      <file name="Scene.material"/>
+    </item>
+  </externals>
+  <environment>
+    <colourAmbient r="0.000000" g="0.000000" b="0.000000"/>
+    <colourBackground r="0.056563" g="0.220815" b="0.400000"/>
+  </environment>
+</scene>
