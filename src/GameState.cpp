@@ -88,14 +88,18 @@ void GameState::createScene()
 {
     m_pSceneMgr->createLight("Light")->setPosition(75,75,75);
 
+
+    m_pCamera->setNearClipDistance(0.1);
     DotSceneLoader* pDotSceneLoader = new DotSceneLoader();
-    pDotSceneLoader->parseDotScene("CubeScene.xml", "General", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
+    pDotSceneLoader->parseDotScene("testLevel.xml", "General", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
+//    pDotSceneLoader->parseDotScene("CubeScene.xml", "General", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
     delete pDotSceneLoader;
 
+    m_pSceneMgr->setSkyBox(true, "darkSea/darkSeaSkyBox");
+/*
     m_pSceneMgr->getEntity("Cube01")->setQueryFlags(CUBE_MASK);
     m_pSceneMgr->getEntity("Cube02")->setQueryFlags(CUBE_MASK);
     m_pSceneMgr->getEntity("Cube03")->setQueryFlags(CUBE_MASK);
-
     m_pOgreHeadEntity = m_pSceneMgr->createEntity("Cube", "ogrehead.mesh");
     m_pOgreHeadEntity->setQueryFlags(OGRE_HEAD_MASK);
     m_pOgreHeadNode = m_pSceneMgr->getRootSceneNode()->createChildSceneNode("CubeNode");
@@ -106,6 +110,8 @@ void GameState::createScene()
     m_pOgreHeadMatHigh = m_pOgreHeadMat->clone("OgreHeadMatHigh");
     m_pOgreHeadMatHigh->getTechnique(0)->getPass(0)->setAmbient(1, 0, 0);
     m_pOgreHeadMatHigh->getTechnique(0)->getPass(0)->setDiffuse(1, 0, 0, 0);
+*/
+
 }
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
