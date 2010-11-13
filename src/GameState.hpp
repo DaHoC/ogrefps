@@ -11,6 +11,7 @@
 
 #include <OgreSubEntity.h>
 #include <OgreMaterialManager.h>
+#include "SoundManager.h"
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
 
@@ -52,6 +53,8 @@ public:
 	void update(double timeSinceLastFrame);
 
 private:
+        SoundManager* soundMgr;
+        unsigned int audioId;
 	Ogre::SceneNode*			m_pOgreHeadNode;
 	Ogre::Entity*				m_pOgreHeadEntity;
 	Ogre::MaterialPtr			m_pOgreHeadMat;

@@ -96,6 +96,16 @@ void GameState::createScene()
     delete pDotSceneLoader;
 
     m_pSceneMgr->setSkyBox(true, "darkSea/darkSeaSkyBox");
+
+    SoundManager *soundMgr;
+    soundMgr = new SoundManager;
+    soundMgr->Initialize();
+    int soundFireGun;
+    Ogre::String* soundLocation = new Ogre::String("/home/dahoc/projects/ogrefps/media/sounds/Octopus.ogg");
+    soundFireGun = soundMgr->CreateSound(*soundLocation);
+
+    int channelFireGun;
+    soundMgr->PlaySound(soundFireGun, m_pSceneMgr->getRootSceneNode(), &channelFireGun);
 /*
     m_pSceneMgr->getEntity("Cube01")->setQueryFlags(CUBE_MASK);
     m_pSceneMgr->getEntity("Cube02")->setQueryFlags(CUBE_MASK);
@@ -111,6 +121,7 @@ void GameState::createScene()
     m_pOgreHeadMatHigh->getTechnique(0)->getPass(0)->setAmbient(1, 0, 0);
     m_pOgreHeadMatHigh->getTechnique(0)->getPass(0)->setDiffuse(1, 0, 0, 0);
 */
+
 
 }
 

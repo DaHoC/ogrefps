@@ -24,6 +24,9 @@
 
 #include <SdkTrays.h>
 
+// Bullet-Ogre integration via OgreBullet
+#include "OgreBulletDynamicsRigidBody.h"
+
 //|||||||||||||||||||||||||||||||||||||||||||||||
 
 class OgreFramework : public Ogre::Singleton<OgreFramework>, OIS::KeyListener, OIS::MouseListener
@@ -42,17 +45,17 @@ public:
 	bool mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id);
 	bool mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id);
 
-	Ogre::Root*					m_pRoot;
-	Ogre::RenderWindow*			m_pRenderWnd;
-	Ogre::Viewport*				m_pViewport;
-	Ogre::Log*					m_pLog;
-	Ogre::Timer*				m_pTimer;
+	Ogre::Root* m_pRoot;
+	Ogre::RenderWindow* m_pRenderWnd;
+	Ogre::Viewport* m_pViewport;
+	Ogre::Log* m_pLog;
+	Ogre::Timer* m_pTimer;
 
-	OIS::InputManager*			m_pInputMgr;
-	OIS::Keyboard*				m_pKeyboard;
-	OIS::Mouse*					m_pMouse;
+	OIS::InputManager* m_pInputMgr;
+	OIS::Keyboard* m_pKeyboard;
+	OIS::Mouse* m_pMouse;
 
-    OgreBites::SdkTrayManager*	m_pTrayMgr;
+        OgreBites::SdkTrayManager* m_pTrayMgr;
 
 private:
         Ogre::String mResourcePath;

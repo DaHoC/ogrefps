@@ -13,6 +13,7 @@
       <itemPath>/home/dahoc/projects/ogrefps/src/GameState.hpp</itemPath>
       <itemPath>/home/dahoc/projects/ogrefps/src/MenuState.hpp</itemPath>
       <itemPath>/home/dahoc/projects/ogrefps/src/PauseState.hpp</itemPath>
+      <itemPath>/home/dahoc/projects/ogrefps/src/SoundManager.h</itemPath>
       <itemPath>/home/dahoc/projects/ogrefps/src/rapidxml.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -31,6 +32,7 @@
       <itemPath>/home/dahoc/projects/ogrefps/src/GameState.cpp</itemPath>
       <itemPath>/home/dahoc/projects/ogrefps/src/MenuState.cpp</itemPath>
       <itemPath>/home/dahoc/projects/ogrefps/src/PauseState.cpp</itemPath>
+      <itemPath>/home/dahoc/projects/ogrefps/src/SoundManager.cpp</itemPath>
       <itemPath>/home/dahoc/projects/ogrefps/src/main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -46,7 +48,7 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>/home/dahoc/projects/ogrefps/src</Elem>
+    <Elem>src</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -62,6 +64,10 @@
             <pElem>/usr/local/include/OGRE</pElem>
             <pElem>/usr/local/include/OIS</pElem>
             <pElem>/usr/local/include/boost</pElem>
+            <pElem>/usr/local/include/fmodex</pElem>
+            <pElem>/usr/local/include/bullet</pElem>
+            <pElem>src/includes/Collisions/include</pElem>
+            <pElem>src/includes/Dynamics/include</pElem>
           </incDir>
           <preprocessorList>
             <Elem>_DEBUG</Elem>
@@ -70,6 +76,7 @@
         <linkerTool>
           <linkerAddLib>
             <pElem>/usr/local/lib/OGRE</pElem>
+            <pElem>lib/Debug</pElem>
           </linkerAddLib>
           <linkerLibItems>
             <linkerLibLibItem>OgreMain</linkerLibLibItem>
@@ -79,6 +86,13 @@
             <linkerLibLibItem>OgreRTShaderSystem</linkerLibLibItem>
             <linkerLibLibItem>OgreProperty</linkerLibLibItem>
             <linkerLibLibItem>CEGUIBase</linkerLibLibItem>
+            <linkerLibLibItem>fmodex</linkerLibLibItem>
+            <linkerLibLibItem>BulletCollision</linkerLibLibItem>
+            <linkerLibLibItem>BulletDynamics</linkerLibLibItem>
+            <linkerLibLibItem>BulletMultiThreaded</linkerLibLibItem>
+            <linkerLibLibItem>BulletSoftBody</linkerLibLibItem>
+            <linkerLibLibItem>BulletSoftBodySolvers_CPU</linkerLibLibItem>
+            <linkerLibLibItem>OgreBulletDynamics</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -99,6 +113,10 @@
             <pElem>/usr/local/include/OGRE</pElem>
             <pElem>/usr/local/include/OIS</pElem>
             <pElem>/usr/local/include/boost</pElem>
+            <pElem>/usr/local/include/fmodex</pElem>
+            <pElem>/usr/local/include/bullet</pElem>
+            <pElem>src/includes/Collisions/include</pElem>
+            <pElem>src/includes/Dynamics/include</pElem>
           </incDir>
           <commandLine>-mthreads -fmessage-length=0 -fexceptions -fident</commandLine>
           <preprocessorList>
@@ -126,6 +144,17 @@
             <linkerLibLibItem>OgreRTShaderSystem</linkerLibLibItem>
             <linkerLibLibItem>OgreProperty</linkerLibLibItem>
             <linkerLibLibItem>CEGUIBase</linkerLibLibItem>
+            <linkerLibLibItem>fmodex</linkerLibLibItem>
+            <linkerLibLibItem>BulletCollision</linkerLibLibItem>
+            <linkerLibLibItem>BulletDynamics</linkerLibLibItem>
+            <linkerLibLibItem>BulletFileLoader</linkerLibLibItem>
+            <linkerLibLibItem>BulletMultiThreaded</linkerLibLibItem>
+            <linkerLibLibItem>BulletSoftBody</linkerLibLibItem>
+            <linkerLibLibItem>BulletSoftBodySolvers_CPU</linkerLibLibItem>
+            <linkerLibLibItem>BulletWorldImporter</linkerLibLibItem>
+            <linkerLibLibItem>ConvexDecomposition</linkerLibLibItem>
+            <linkerLibLibItem>GIMPACTUtils</linkerLibLibItem>
+            <linkerLibLibItem>LinearMath</linkerLibLibItem>
           </linkerLibItems>
           <commandLine>-Wl,--enable-auto-image-base -Wl,--add-stdcall-alias -Wl,--enable-auto-import</commandLine>
         </linkerTool>
