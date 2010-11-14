@@ -92,20 +92,19 @@ void GameState::exit() {
 void GameState::createScene() {
     m_pSceneMgr->createLight("Light")->setPosition(75, 75, 75);
 
+    m_pSceneMgr->setSkyBox(true, "darkSea/darkSeaSkyBox");
 
     m_pCamera->setNearClipDistance(0.1);
     DotSceneLoader* pDotSceneLoader = new DotSceneLoader();
-    pDotSceneLoader->parseDotScene("testLevel.xml", "General", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
-    //    pDotSceneLoader->parseDotScene("CubeScene.xml", "General", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
+    pDotSceneLoader->parseDotScene("testLevel.xml", "testLevel", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
+//        pDotSceneLoader->parseDotScene("CubeScene.xml", "General", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
     delete pDotSceneLoader;
-
-    m_pSceneMgr->setSkyBox(true, "darkSea/darkSeaSkyBox");
 
     SoundManager *soundMgr;
     soundMgr = new SoundManager;
     soundMgr->Initialize();
     int soundFireGun;
-    Ogre::String* soundLocation = new Ogre::String("/home/dahoc/projects/ogrefps/media/sounds/Octopus.wav");
+    String* soundLocation = new String("/home/dahoc/projects/ogrefps/media/sounds/Octopus.wav");
     soundFireGun = soundMgr->CreateSound(*soundLocation);
 
     int channelFireGun;
