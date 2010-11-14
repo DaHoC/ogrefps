@@ -12,6 +12,8 @@ GameState::GameState() {
     this->worldBounds = AxisAlignedBox (Ogre::Vector3 (-10000, -10000, -10000),Ogre::Vector3 (10000,  10000,  10000)); //aligned box for Bullet
     this->gravityVector = Vector3(0,-9.81,0); // gravity vector for Bullet
 
+    
+
     m_MoveSpeed = 0.1f;
     m_RotateSpeed = 0.3f;
 
