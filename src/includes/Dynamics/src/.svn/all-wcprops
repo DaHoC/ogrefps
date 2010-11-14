@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/ogreaddons/!svn/ver/2952/trunk/ogrebullet/Dynamics/src
+END
+OgreBulletDynamicsPrecompiled.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Dynamics/src/OgreBulletDynamicsPrecompiled.cpp
+END
+OgreBulletDynamicsConstraint.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Dynamics/src/OgreBulletDynamicsConstraint.cpp
+END
+OgreBulletDynamicsObjectState.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Dynamics/src/OgreBulletDynamicsObjectState.cpp
+END
+OgreBulletDynamicsWorld.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svnroot/ogreaddons/!svn/ver/2952/trunk/ogrebullet/Dynamics/src/OgreBulletDynamicsWorld.cpp
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnroot/ogreaddons/!svn/ver/2848/trunk/ogrebullet/Dynamics/src/Makefile.am
+END
+OgreBulletDynamicsRigidBody.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Dynamics/src/OgreBulletDynamicsRigidBody.cpp
+END

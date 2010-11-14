@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Collisions/include/Debug
+END
+OgreBulletCollisionsDebugShape.h
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Collisions/include/Debug/OgreBulletCollisionsDebugShape.h
+END
+OgreBulletCollisionsDebugDrawer.h
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Collisions/include/Debug/OgreBulletCollisionsDebugDrawer.h
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svnroot/ogreaddons/!svn/ver/2848/trunk/ogrebullet/Collisions/include/Debug/Makefile.am
+END
+OgreBulletCollisionsDebugLines.h
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Collisions/include/Debug/OgreBulletCollisionsDebugLines.h
+END
+OgreBulletCollisionsDebugContact.h
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Collisions/include/Debug/OgreBulletCollisionsDebugContact.h
+END

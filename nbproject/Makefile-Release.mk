@@ -37,6 +37,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/2101680177/AdvancedOgreFramework.o \
 	${OBJECTDIR}/_ext/2101680177/GameState.o \
 	${OBJECTDIR}/_ext/2101680177/DotSceneLoader.o \
+	${OBJECTDIR}/_ext/2101680177/SoundManager.o \
 	${OBJECTDIR}/_ext/2101680177/DemoApp.o \
 	${OBJECTDIR}/_ext/2101680177/AppStateManager.o \
 	${OBJECTDIR}/_ext/2101680177/main.o \
@@ -57,7 +58,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/usr/local/lib/OGRE -Wl,-rpath /home/dahoc/projects/ogrefps/ -lOgreMain -lOIS -lOgreTerrain -lOgrePaging -lOgreRTShaderSystem -lOgreProperty -lCEGUIBase
+LDLIBSOPTIONS=-L/usr/local/lib/OGRE -Wl,-rpath /home/dahoc/projects/ogrefps/ -lOgreMain -lOIS -lOgreTerrain -lOgrePaging -lOgreRTShaderSystem -lOgreProperty -lCEGUIBase -lfmodex -lBulletCollision -lBulletDynamics -lBulletFileLoader -lBulletMultiThreaded -lBulletSoftBody -lBulletSoftBodySolvers_CPU -lBulletWorldImporter -lConvexDecomposition -lGIMPACTUtils -lLinearMath
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -70,42 +71,47 @@ dist/Release/GNU-Linux-x86/ogrefps: ${OBJECTFILES}
 ${OBJECTDIR}/_ext/2101680177/PauseState.o: /home/dahoc/projects/ogrefps/src/PauseState.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/2101680177
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -DNDEBUG -I/usr/local/include/OGRE -I/usr/local/include/OIS -I/usr/local/include/boost -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2101680177/PauseState.o /home/dahoc/projects/ogrefps/src/PauseState.cpp
+	$(COMPILE.cc) -O2 -DNDEBUG -I/usr/local/include/OGRE -I/usr/local/include/OIS -I/usr/local/include/boost -I/usr/local/include/fmodex -I/usr/local/include/bullet -Isrc/includes/Collisions/include -Isrc/includes/Dynamics/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2101680177/PauseState.o /home/dahoc/projects/ogrefps/src/PauseState.cpp
 
 ${OBJECTDIR}/_ext/2101680177/AdvancedOgreFramework.o: /home/dahoc/projects/ogrefps/src/AdvancedOgreFramework.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/2101680177
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -DNDEBUG -I/usr/local/include/OGRE -I/usr/local/include/OIS -I/usr/local/include/boost -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2101680177/AdvancedOgreFramework.o /home/dahoc/projects/ogrefps/src/AdvancedOgreFramework.cpp
+	$(COMPILE.cc) -O2 -DNDEBUG -I/usr/local/include/OGRE -I/usr/local/include/OIS -I/usr/local/include/boost -I/usr/local/include/fmodex -I/usr/local/include/bullet -Isrc/includes/Collisions/include -Isrc/includes/Dynamics/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2101680177/AdvancedOgreFramework.o /home/dahoc/projects/ogrefps/src/AdvancedOgreFramework.cpp
 
 ${OBJECTDIR}/_ext/2101680177/GameState.o: /home/dahoc/projects/ogrefps/src/GameState.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/2101680177
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -DNDEBUG -I/usr/local/include/OGRE -I/usr/local/include/OIS -I/usr/local/include/boost -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2101680177/GameState.o /home/dahoc/projects/ogrefps/src/GameState.cpp
+	$(COMPILE.cc) -O2 -DNDEBUG -I/usr/local/include/OGRE -I/usr/local/include/OIS -I/usr/local/include/boost -I/usr/local/include/fmodex -I/usr/local/include/bullet -Isrc/includes/Collisions/include -Isrc/includes/Dynamics/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2101680177/GameState.o /home/dahoc/projects/ogrefps/src/GameState.cpp
 
 ${OBJECTDIR}/_ext/2101680177/DotSceneLoader.o: /home/dahoc/projects/ogrefps/src/DotSceneLoader.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/2101680177
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -DNDEBUG -I/usr/local/include/OGRE -I/usr/local/include/OIS -I/usr/local/include/boost -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2101680177/DotSceneLoader.o /home/dahoc/projects/ogrefps/src/DotSceneLoader.cpp
+	$(COMPILE.cc) -O2 -DNDEBUG -I/usr/local/include/OGRE -I/usr/local/include/OIS -I/usr/local/include/boost -I/usr/local/include/fmodex -I/usr/local/include/bullet -Isrc/includes/Collisions/include -Isrc/includes/Dynamics/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2101680177/DotSceneLoader.o /home/dahoc/projects/ogrefps/src/DotSceneLoader.cpp
+
+${OBJECTDIR}/_ext/2101680177/SoundManager.o: /home/dahoc/projects/ogrefps/src/SoundManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2101680177
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -DNDEBUG -I/usr/local/include/OGRE -I/usr/local/include/OIS -I/usr/local/include/boost -I/usr/local/include/fmodex -I/usr/local/include/bullet -Isrc/includes/Collisions/include -Isrc/includes/Dynamics/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2101680177/SoundManager.o /home/dahoc/projects/ogrefps/src/SoundManager.cpp
 
 ${OBJECTDIR}/_ext/2101680177/DemoApp.o: /home/dahoc/projects/ogrefps/src/DemoApp.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/2101680177
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -DNDEBUG -I/usr/local/include/OGRE -I/usr/local/include/OIS -I/usr/local/include/boost -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2101680177/DemoApp.o /home/dahoc/projects/ogrefps/src/DemoApp.cpp
+	$(COMPILE.cc) -O2 -DNDEBUG -I/usr/local/include/OGRE -I/usr/local/include/OIS -I/usr/local/include/boost -I/usr/local/include/fmodex -I/usr/local/include/bullet -Isrc/includes/Collisions/include -Isrc/includes/Dynamics/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2101680177/DemoApp.o /home/dahoc/projects/ogrefps/src/DemoApp.cpp
 
 ${OBJECTDIR}/_ext/2101680177/AppStateManager.o: /home/dahoc/projects/ogrefps/src/AppStateManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/2101680177
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -DNDEBUG -I/usr/local/include/OGRE -I/usr/local/include/OIS -I/usr/local/include/boost -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2101680177/AppStateManager.o /home/dahoc/projects/ogrefps/src/AppStateManager.cpp
+	$(COMPILE.cc) -O2 -DNDEBUG -I/usr/local/include/OGRE -I/usr/local/include/OIS -I/usr/local/include/boost -I/usr/local/include/fmodex -I/usr/local/include/bullet -Isrc/includes/Collisions/include -Isrc/includes/Dynamics/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2101680177/AppStateManager.o /home/dahoc/projects/ogrefps/src/AppStateManager.cpp
 
 ${OBJECTDIR}/_ext/2101680177/main.o: /home/dahoc/projects/ogrefps/src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/2101680177
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -DNDEBUG -I/usr/local/include/OGRE -I/usr/local/include/OIS -I/usr/local/include/boost -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2101680177/main.o /home/dahoc/projects/ogrefps/src/main.cpp
+	$(COMPILE.cc) -O2 -DNDEBUG -I/usr/local/include/OGRE -I/usr/local/include/OIS -I/usr/local/include/boost -I/usr/local/include/fmodex -I/usr/local/include/bullet -Isrc/includes/Collisions/include -Isrc/includes/Dynamics/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2101680177/main.o /home/dahoc/projects/ogrefps/src/main.cpp
 
 ${OBJECTDIR}/_ext/2101680177/MenuState.o: /home/dahoc/projects/ogrefps/src/MenuState.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/2101680177
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -DNDEBUG -I/usr/local/include/OGRE -I/usr/local/include/OIS -I/usr/local/include/boost -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2101680177/MenuState.o /home/dahoc/projects/ogrefps/src/MenuState.cpp
+	$(COMPILE.cc) -O2 -DNDEBUG -I/usr/local/include/OGRE -I/usr/local/include/OIS -I/usr/local/include/boost -I/usr/local/include/fmodex -I/usr/local/include/bullet -Isrc/includes/Collisions/include -Isrc/includes/Dynamics/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2101680177/MenuState.o /home/dahoc/projects/ogrefps/src/MenuState.cpp
 
 # Subprojects
 .build-subprojects:

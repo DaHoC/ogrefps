@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Collisions/src/Shapes
+END
+OgreBulletCollisionsCylinderShape.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Collisions/src/Shapes/OgreBulletCollisionsCylinderShape.cpp
+END
+OgreBulletCollisionsTrimeshShape.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Collisions/src/Shapes/OgreBulletCollisionsTrimeshShape.cpp
+END
+OgreBulletCollisionsCapsuleShape.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Collisions/src/Shapes/OgreBulletCollisionsCapsuleShape.cpp
+END
+OgreBulletCollisionsMinkowskiSumShape.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Collisions/src/Shapes/OgreBulletCollisionsMinkowskiSumShape.cpp
+END
+OgreBulletCollisionsMultiSphereShape.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Collisions/src/Shapes/OgreBulletCollisionsMultiSphereShape.cpp
+END
+OgreBulletCollisionsCompoundShape.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Collisions/src/Shapes/OgreBulletCollisionsCompoundShape.cpp
+END
+OgreBulletCollisionsConeShape.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Collisions/src/Shapes/OgreBulletCollisionsConeShape.cpp
+END
+OgreBulletCollisionsGImpactShape.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Collisions/src/Shapes/OgreBulletCollisionsGImpactShape.cpp
+END
+OgreBulletCollisionsTriangleShape.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Collisions/src/Shapes/OgreBulletCollisionsTriangleShape.cpp
+END
+OgreBulletCollisionsSphereShape.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Collisions/src/Shapes/OgreBulletCollisionsSphereShape.cpp
+END
+OgreBulletCollisionsConvexHullShape.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Collisions/src/Shapes/OgreBulletCollisionsConvexHullShape.cpp
+END
+OgreBulletCollisionsStaticPlaneShape.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Collisions/src/Shapes/OgreBulletCollisionsStaticPlaneShape.cpp
+END
+OgreBulletCollisionsBoxShape.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Collisions/src/Shapes/OgreBulletCollisionsBoxShape.cpp
+END

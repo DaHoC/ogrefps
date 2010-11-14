@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/ogreaddons/!svn/ver/2952/trunk/ogrebullet/Dynamics/include
+END
+OgreBulletDynamicsRigidBody.h
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Dynamics/include/OgreBulletDynamicsRigidBody.h
+END
+OgreBulletDynamics.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Dynamics/include/OgreBulletDynamics.h
+END
+OgreBulletDynamicsConstraint.h
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Dynamics/include/OgreBulletDynamicsConstraint.h
+END
+OgreBulletDynamicsPreRequisites.h
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Dynamics/include/OgreBulletDynamicsPreRequisites.h
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnroot/ogreaddons/!svn/ver/2848/trunk/ogrebullet/Dynamics/include/Makefile.am
+END
+OgreBulletDynamicsObjectState.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svnroot/ogreaddons/!svn/ver/2941/trunk/ogrebullet/Dynamics/include/OgreBulletDynamicsObjectState.h
+END
+OgreBulletDynamicsWorld.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/ogreaddons/!svn/ver/2952/trunk/ogrebullet/Dynamics/include/OgreBulletDynamicsWorld.h
+END
