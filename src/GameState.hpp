@@ -13,6 +13,11 @@
 #include <OgreMaterialManager.h>
 #include "SoundManager.h"
 
+#include "OgreBulletDynamicsRigidBody.h"				 // for OgreBullet
+#include "Shapes/OgreBulletCollisionsStaticPlaneShape.h" // for static planes
+#include "Shapes/OgreBulletCollisionsBoxShape.h"		 // for Boxes
+
+
 //|||||||||||||||||||||||||||||||||||||||||||||||
 
 enum QueryFlags {
@@ -76,7 +81,7 @@ private:
     // Bullet physics stuff
     Ogre::Vector3 gravityVector;
     AxisAlignedBox worldBounds;
-    OgreBulletDynamics::DynamicsWorld *mWorld;	// OgreBullet World
+    OgreBulletDynamics::DynamicsWorld *mWorld; // OgreBullet World
     OgreBulletCollisions::DebugDrawer *debugDrawer;
     int mNumEntitiesInstanced;
 

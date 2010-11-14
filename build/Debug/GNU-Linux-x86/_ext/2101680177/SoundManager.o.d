@@ -163,7 +163,6 @@ build/Debug/GNU-Linux-x86/_ext/2101680177/SoundManager.o: \
  /usr/local/include/OGRE/OgreInstancedGeometry.h \
  /usr/local/include/OGRE/OgreSkeletonInstance.h \
  /usr/local/include/OGRE/OgreLodListener.h \
- /usr/local/include/OGRE/OgreInstanceManager.h \
  /usr/local/include/OGRE/OgreLodStrategyManager.h \
  /usr/local/include/OGRE/OgreLodStrategy.h \
  /usr/local/include/OGRE/OgreSkeletonManager.h \
@@ -516,8 +515,6 @@ build/Debug/GNU-Linux-x86/_ext/2101680177/SoundManager.o: \
 /usr/local/include/OGRE/OgreSkeletonInstance.h:
 
 /usr/local/include/OGRE/OgreLodListener.h:
-
-/usr/local/include/OGRE/OgreInstanceManager.h:
 
 /usr/local/include/OGRE/OgreLodStrategyManager.h:
 

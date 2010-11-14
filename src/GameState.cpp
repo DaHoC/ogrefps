@@ -9,21 +9,27 @@ using namespace Ogre;
 //|||||||||||||||||||||||||||||||||||||||||||||||
 
 GameState::GameState() {
+
+    m_pSceneMgr = OgreFramework::getSingletonPtr()->m_pRoot->createSceneManager(ST_GENERIC, "GameSceneMgr");
+
     this->worldBounds = AxisAlignedBox (Ogre::Vector3 (-10000, -10000, -10000),Ogre::Vector3 (10000,  10000,  10000)); //aligned box for Bullet
     this->gravityVector = Vector3(0,-9.81,0); // gravity vector for Bullet
 
-    
+    this->mNumEntitiesInstanced = 0; // how many shapes are created
+    // Start Bullet
+    this->mWorld = new OgreBulletDynamics::DynamicsWorld(m_pSceneMgr, this->worldBounds, this->gravityVector);
 
-    m_MoveSpeed = 0.1f;
-    m_RotateSpeed = 0.3f;
 
-    m_bLMouseDown = false;
-    m_bRMouseDown = false;
-    m_bQuit = false;
-    m_bSettingsMode = false;
+    this->m_MoveSpeed = 0.1f;
+    this->m_RotateSpeed = 0.3f;
 
-    m_pCurrentObject = 0;
-    m_pDetailsPanel = 0;
+    this->m_bLMouseDown = false;
+    this->m_bRMouseDown = false;
+    this->m_bQuit = false;
+    this->m_bSettingsMode = false;
+
+    this->m_pCurrentObject = 0;
+    this->m_pDetailsPanel = 0;
 }
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
@@ -31,7 +37,6 @@ GameState::GameState() {
 void GameState::enter() {
     OgreFramework::getSingletonPtr()->m_pLog->logMessage("Entering GameState...");
 
-    m_pSceneMgr = OgreFramework::getSingletonPtr()->m_pRoot->createSceneManager(ST_GENERIC, "GameSceneMgr");
     m_pSceneMgr->setAmbientLight(Ogre::ColourValue(0.7f, 0.7f, 0.7f));
 
     m_pRSQ = m_pSceneMgr->createRayQuery(Ray());

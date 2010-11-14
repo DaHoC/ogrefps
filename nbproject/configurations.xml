@@ -66,6 +66,13 @@
             <pElem>/usr/local/include/boost</pElem>
             <pElem>/usr/local/include/fmodex</pElem>
             <pElem>/usr/local/include/bullet</pElem>
+            <pElem>/usr/local/include/bullet/BulletDynamics</pElem>
+            <pElem>/usr/local/include/bullet/BulletCollision</pElem>
+            <pElem>/usr/local/include/bullet/BulletMultiThreaded</pElem>
+            <pElem>/usr/local/include/bullet/BulletSoftBody</pElem>
+            <pElem>/usr/local/include/bullet/LinearMath</pElem>
+            <pElem>/usr/local/include/bullet/ConvexDecomposition</pElem>
+            <pElem>/usr/local/include/bullet/GIMPACTUtils</pElem>
             <pElem>src/includes/Collisions/include</pElem>
             <pElem>src/includes/Dynamics/include</pElem>
           </incDir>
@@ -76,7 +83,6 @@
         <linkerTool>
           <linkerAddLib>
             <pElem>/usr/local/lib/OGRE</pElem>
-            <pElem>lib/Debug</pElem>
           </linkerAddLib>
           <linkerLibItems>
             <linkerLibLibItem>OgreMain</linkerLibLibItem>
@@ -87,12 +93,15 @@
             <linkerLibLibItem>OgreProperty</linkerLibLibItem>
             <linkerLibLibItem>CEGUIBase</linkerLibLibItem>
             <linkerLibLibItem>fmodex</linkerLibLibItem>
+            <linkerLibLibItem>LinearMath</linkerLibLibItem>
             <linkerLibLibItem>BulletCollision</linkerLibLibItem>
             <linkerLibLibItem>BulletDynamics</linkerLibLibItem>
             <linkerLibLibItem>BulletMultiThreaded</linkerLibLibItem>
             <linkerLibLibItem>BulletSoftBody</linkerLibLibItem>
             <linkerLibLibItem>BulletSoftBodySolvers_CPU</linkerLibLibItem>
-            <linkerLibLibItem>OgreBulletDynamics</linkerLibLibItem>
+            <linkerLibLibItem>ConvexDecomposition</linkerLibLibItem>
+            <linkerLibLibItem>OgreBulletCol</linkerLibLibItem>
+            <linkerLibLibItem>OgreBulletDyn</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -115,6 +124,13 @@
             <pElem>/usr/local/include/boost</pElem>
             <pElem>/usr/local/include/fmodex</pElem>
             <pElem>/usr/local/include/bullet</pElem>
+            <pElem>/usr/local/include/bullet/BulletDynamics</pElem>
+            <pElem>/usr/local/include/bullet/BulletCollision</pElem>
+            <pElem>/usr/local/include/bullet/BulletMultiThreaded</pElem>
+            <pElem>/usr/local/include/bullet/BulletSoftBody</pElem>
+            <pElem>/usr/local/include/bullet/LinearMath</pElem>
+            <pElem>/usr/local/include/bullet/ConvexDecomposition</pElem>
+            <pElem>/usr/local/include/bullet/GIMPACTUtils</pElem>
             <pElem>src/includes/Collisions/include</pElem>
             <pElem>src/includes/Dynamics/include</pElem>
           </incDir>
@@ -145,16 +161,15 @@
             <linkerLibLibItem>OgreProperty</linkerLibLibItem>
             <linkerLibLibItem>CEGUIBase</linkerLibLibItem>
             <linkerLibLibItem>fmodex</linkerLibLibItem>
+            <linkerLibLibItem>LinearMath</linkerLibLibItem>
             <linkerLibLibItem>BulletCollision</linkerLibLibItem>
             <linkerLibLibItem>BulletDynamics</linkerLibLibItem>
-            <linkerLibLibItem>BulletFileLoader</linkerLibLibItem>
             <linkerLibLibItem>BulletMultiThreaded</linkerLibLibItem>
             <linkerLibLibItem>BulletSoftBody</linkerLibLibItem>
             <linkerLibLibItem>BulletSoftBodySolvers_CPU</linkerLibLibItem>
-            <linkerLibLibItem>BulletWorldImporter</linkerLibLibItem>
             <linkerLibLibItem>ConvexDecomposition</linkerLibLibItem>
-            <linkerLibLibItem>GIMPACTUtils</linkerLibLibItem>
-            <linkerLibLibItem>LinearMath</linkerLibLibItem>
+            <linkerLibLibItem>OgreBulletCol</linkerLibLibItem>
+            <linkerLibLibItem>OgreBulletDyn</linkerLibLibItem>
           </linkerLibItems>
           <commandLine>-Wl,--enable-auto-image-base -Wl,--add-stdcall-alias -Wl,--enable-auto-import</commandLine>
         </linkerTool>

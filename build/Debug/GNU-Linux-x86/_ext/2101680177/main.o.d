@@ -115,13 +115,10 @@ build/Debug/GNU-Linux-x86/_ext/2101680177/main.o: \
  /usr/local/include/OGRE/OgreSkeletonInstance.h \
  /usr/local/include/OGRE/OgreBone.h \
  /usr/local/include/OGRE/OgreLodListener.h \
- /usr/local/include/OGRE/OgreInstanceManager.h \
  /usr/local/include/OGRE/OgreRenderSystem.h \
- /usr/local/include/OGRE/OgreMaterialManager.h \
- /usr/local/include/OGRE/OgreResourceManager.h \
- /usr/local/include/OGRE/OgreMaterialSerializer.h \
  /usr/local/include/OGRE/OgreRenderTarget.h \
  /usr/local/include/OGRE/OgreTextureManager.h \
+ /usr/local/include/OGRE/OgreResourceManager.h \
  /usr/local/include/OGRE/OgreViewport.h \
  /usr/local/include/OGRE/OgreTimer.h \
  /usr/local/include/OGRE/GLX/OgreTimerImp.h \
@@ -156,6 +153,8 @@ build/Debug/GNU-Linux-x86/_ext/2101680177/main.o: \
  /usr/local/include/OGRE/OgreHighLevelGpuProgram.h \
  /usr/local/include/OGRE/OgreHighLevelGpuProgramManager.h \
  /usr/local/include/OGRE/OgreManualObject.h \
+ /usr/local/include/OGRE/OgreMaterialManager.h \
+ /usr/local/include/OGRE/OgreMaterialSerializer.h \
  /usr/local/include/OGRE/OgreMeshManager.h \
  /usr/local/include/OGRE/OgrePatchMesh.h \
  /usr/local/include/OGRE/OgrePatchSurface.h \
@@ -621,19 +620,13 @@ build/Debug/GNU-Linux-x86/_ext/2101680177/main.o: \
 
 /usr/local/include/OGRE/OgreLodListener.h:
 
-/usr/local/include/OGRE/OgreInstanceManager.h:
-
 /usr/local/include/OGRE/OgreRenderSystem.h:
-
-/usr/local/include/OGRE/OgreMaterialManager.h:
-
-/usr/local/include/OGRE/OgreResourceManager.h:
-
-/usr/local/include/OGRE/OgreMaterialSerializer.h:
 
 /usr/local/include/OGRE/OgreRenderTarget.h:
 
 /usr/local/include/OGRE/OgreTextureManager.h:
+
+/usr/local/include/OGRE/OgreResourceManager.h:
 
 /usr/local/include/OGRE/OgreViewport.h:
 
@@ -712,6 +705,10 @@ build/Debug/GNU-Linux-x86/_ext/2101680177/main.o: \
 /usr/local/include/OGRE/OgreHighLevelGpuProgramManager.h:
 
 /usr/local/include/OGRE/OgreManualObject.h:
+
+/usr/local/include/OGRE/OgreMaterialManager.h:
+
+/usr/local/include/OGRE/OgreMaterialSerializer.h:
 
 /usr/local/include/OGRE/OgreMeshManager.h:
 
