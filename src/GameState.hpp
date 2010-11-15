@@ -30,7 +30,7 @@ enum QueryFlags {
 class GameState : public AppState {
 public:
     GameState();
-
+    ~GameState();
     DECLARE_APPSTATE_CLASS(GameState)
 
     void enter();

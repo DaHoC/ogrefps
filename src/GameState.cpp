@@ -12,12 +12,45 @@ GameState::GameState() {
 
     m_pSceneMgr = OgreFramework::getSingletonPtr()->m_pRoot->createSceneManager(ST_GENERIC, "GameSceneMgr");
 
-    this->worldBounds = AxisAlignedBox (Ogre::Vector3 (-10000, -10000, -10000),Ogre::Vector3 (10000,  10000,  10000)); //aligned box for Bullet
-    this->gravityVector = Vector3(0,-9.81,0); // gravity vector for Bullet
+    this->worldBounds = AxisAlignedBox(Ogre::Vector3(-10000, -10000, -10000), Ogre::Vector3(10000, 10000, 10000)); //aligned box for Bullet
+    this->gravityVector = Vector3(0, -9.81, 0); // gravity vector for Bullet
 
     this->mNumEntitiesInstanced = 0; // how many shapes are created
     // Start Bullet
     this->mWorld = new OgreBulletDynamics::DynamicsWorld(m_pSceneMgr, this->worldBounds, this->gravityVector);
+
+    // add Debug info display tool
+    debugDrawer = new OgreBulletCollisions::DebugDrawer();
+    debugDrawer->setDrawWireframe(true); // we want to see the Bullet containers
+
+    mWorld->setDebugDrawer(debugDrawer);
+    mWorld->setShowDebugShapes(true); // enable it if you want to see the Bullet containers
+    SceneNode *debugDrawNode = m_pSceneMgr->getRootSceneNode()->createChildSceneNode("debugDrawer", Ogre::Vector3::ZERO);
+    debugDrawNode->attachObject(static_cast<SimpleRenderable *> (debugDrawer));
+
+    // Define a floor plane mesh
+    Entity* floorEnt;
+    Plane p;
+    p.normal = Vector3(0, 1, 0);
+    p.d = 0;
+    MeshManager::getSingleton().createPlane("FloorPlane",
+            ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+            p, 200000, 200000, 20, 20, true, 1, 9000, 9000,
+            Vector3::UNIT_Z);
+    // Create an entity (the floor)
+    floorEnt = m_pSceneMgr->createEntity("floor", "FloorPlane");
+    floorEnt->setMaterialName("Examples/BumpyMetal");
+    m_pSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(floorEnt);
+
+    // add collision detection to it
+    OgreBulletCollisions::CollisionShape* Shape;
+    Shape = new OgreBulletCollisions::StaticPlaneCollisionShape(Ogre::Vector3(0, 1, 0), 0); // (normal vector, distance)
+    // a body is needed for the shape
+    OgreBulletDynamics::RigidBody* defaultPlaneBody = new OgreBulletDynamics::RigidBody("BasePlane", mWorld);
+    defaultPlaneBody->setStaticShape(Shape, 0.1, 0.8); // (shape, restitution, friction)
+    // push the created objects to the deques
+    mShapes.push_back(Shape);
+    mBodies.push_back(defaultPlaneBody);
 
 
     this->m_MoveSpeed = 0.1f;
@@ -30,6 +63,27 @@ GameState::GameState() {
 
     this->m_pCurrentObject = 0;
     this->m_pDetailsPanel = 0;
+}
+
+// Clean up
+GameState::~GameState() {
+    // OgreBullet physic delete - RigidBodies
+    std::deque<OgreBulletDynamics::RigidBody *>::iterator itBody = mBodies.begin();
+    while (mBodies.end() != itBody) {
+        delete *itBody;
+        ++itBody;
+    }
+    // OgreBullet physic delete - Shapes
+    std::deque<OgreBulletCollisions::CollisionShape *>::iterator itShape = mShapes.begin();
+    while (mShapes.end() != itShape) {
+        delete *itShape;
+        ++itShape;
+    }
+    mBodies.clear();
+    mShapes.clear();
+    delete mWorld->getDebugDrawer();
+    mWorld->setDebugDrawer(0);
+    delete mWorld;
 }
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
@@ -97,7 +151,7 @@ void GameState::createScene() {
     m_pCamera->setNearClipDistance(0.1);
     DotSceneLoader* pDotSceneLoader = new DotSceneLoader();
     pDotSceneLoader->parseDotScene("testLevel.xml", "testLevel", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
-//        pDotSceneLoader->parseDotScene("CubeScene.xml", "General", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
+    //        pDotSceneLoader->parseDotScene("CubeScene.xml", "General", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
     delete pDotSceneLoader;
 
     SoundManager *soundMgr;
@@ -284,6 +338,8 @@ void GameState::getInput() {
 void GameState::update(double timeSinceLastFrame) {
     m_FrameEvent.timeSinceLastFrame = timeSinceLastFrame;
     OgreFramework::getSingletonPtr()->m_pTrayMgr->frameRenderingQueued(m_FrameEvent);
+
+    mWorld->stepSimulation(m_FrameEvent.timeSinceLastFrame); // update Bullet Physics animation
 
     if (m_bQuit == true) {
         popAppState();

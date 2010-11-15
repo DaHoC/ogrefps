@@ -63,7 +63,7 @@ void AppStateManager::start(AppState* state) {
     int startTime = 0;
 
     while (!m_bShutdown) {
-        if (OgreFramework::getSingletonPtr()->m_pRenderWnd->isClosed())m_bShutdown = true;
+        if (OgreFramework::getSingletonPtr()->m_pRenderWnd->isClosed()) m_bShutdown = true;
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32 || OGRE_PLATFORM == OGRE_PLATFORM_LINUX
         Ogre::WindowEventUtilities::messagePump();
