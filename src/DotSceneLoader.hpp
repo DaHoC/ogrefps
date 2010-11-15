@@ -17,8 +17,7 @@
 //|||||||||||||||||||||||||||||||||||||||||||||||
 
 // Forward declarations
-namespace Ogre
-{
+namespace Ogre {
     class SceneManager;
     class SceneNode;
     class TerrainGroup;
@@ -27,8 +26,7 @@ namespace Ogre
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
 
-class nodeProperty
-{
+class nodeProperty {
 public:
     Ogre::String nodeName;
     Ogre::String propertyNm;
@@ -36,13 +34,13 @@ public:
     Ogre::String typeName;
 
     nodeProperty(const Ogre::String &node, const Ogre::String &propertyName, const Ogre::String &value, const Ogre::String &type)
-        : nodeName(node), propertyNm(propertyName), valueName(value), typeName(type) {}
+    : nodeName(node), propertyNm(propertyName), valueName(value), typeName(type) {
+    }
 };
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
 
-class DotSceneLoader
-{
+class DotSceneLoader {
 public:
     Ogre::TerrainGlobalOptions *mTerrainGlobalOptions;
 
@@ -52,7 +50,9 @@ public:
     void parseDotScene(const Ogre::String &SceneName, const Ogre::String &groupName, Ogre::SceneManager *yourSceneMgr, Ogre::SceneNode *pAttachNode = NULL, const Ogre::String &sPrependNode = "");
     Ogre::String getProperty(const Ogre::String &ndNm, const Ogre::String &prop);
 
-    Ogre::TerrainGroup* getTerrainGroup() { return mTerrainGroup; }
+    Ogre::TerrainGroup* getTerrainGroup() {
+        return mTerrainGroup;
+    }
 
     std::vector<nodeProperty> nodeProperties;
     std::vector<Ogre::String> staticObjects;

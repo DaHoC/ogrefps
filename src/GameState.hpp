@@ -81,9 +81,9 @@ private:
     // Bullet physics stuff
     Ogre::Vector3 gravityVector;
     AxisAlignedBox worldBounds;
-    OgreBulletDynamics::DynamicsWorld *mWorld; // OgreBullet World
-    OgreBulletCollisions::DebugDrawer *debugDrawer;
-    int mNumEntitiesInstanced;
+    OgreBulletDynamics::DynamicsWorld* mWorld; // OgreBullet World
+    OgreBulletCollisions::DebugDrawer* debugDrawer;
+    unsigned int mNumEntitiesInstanced;
 
     std::deque<OgreBulletDynamics::RigidBody *> mBodies;
     std::deque<OgreBulletCollisions::CollisionShape *> mShapes;
