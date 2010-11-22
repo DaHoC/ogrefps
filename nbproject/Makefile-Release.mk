@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/2101680177/SoundManager.o \
 	${OBJECTDIR}/_ext/2101680177/DemoApp.o \
 	${OBJECTDIR}/_ext/2101680177/AppStateManager.o \
+	${OBJECTDIR}/src/player.o \
 	${OBJECTDIR}/_ext/2101680177/main.o \
 	${OBJECTDIR}/_ext/2101680177/MenuState.o
 
@@ -102,6 +103,11 @@ ${OBJECTDIR}/_ext/2101680177/AppStateManager.o: /home/dahoc/projects/ogrefps/src
 	${MKDIR} -p ${OBJECTDIR}/_ext/2101680177
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -DNDEBUG -I/usr/local/include/OGRE -I/usr/local/include/OIS -I/usr/local/include/boost -I/usr/local/include/fmodex -I/usr/local/include/bullet -I/usr/local/include/bullet/BulletDynamics -I/usr/local/include/bullet/BulletCollision -I/usr/local/include/bullet/BulletMultiThreaded -I/usr/local/include/bullet/BulletSoftBody -I/usr/local/include/bullet/LinearMath -I/usr/local/include/bullet/ConvexDecomposition -I/usr/local/include/bullet/GIMPACTUtils -Isrc/includes/Collisions/include -Isrc/includes/Dynamics/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2101680177/AppStateManager.o /home/dahoc/projects/ogrefps/src/AppStateManager.cpp
+
+${OBJECTDIR}/src/player.o: src/player.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -DNDEBUG -I/usr/local/include/OGRE -I/usr/local/include/OIS -I/usr/local/include/boost -I/usr/local/include/fmodex -I/usr/local/include/bullet -I/usr/local/include/bullet/BulletDynamics -I/usr/local/include/bullet/BulletCollision -I/usr/local/include/bullet/BulletMultiThreaded -I/usr/local/include/bullet/BulletSoftBody -I/usr/local/include/bullet/LinearMath -I/usr/local/include/bullet/ConvexDecomposition -I/usr/local/include/bullet/GIMPACTUtils -Isrc/includes/Collisions/include -Isrc/includes/Dynamics/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/player.o src/player.cpp
 
 ${OBJECTDIR}/_ext/2101680177/main.o: /home/dahoc/projects/ogrefps/src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/2101680177

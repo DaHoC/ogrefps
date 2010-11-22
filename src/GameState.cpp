@@ -12,6 +12,21 @@ GameState::GameState() {
 
     m_pSceneMgr = OgreFramework::getSingletonPtr()->m_pRoot->createSceneManager(ST_GENERIC, "GameSceneMgr");
 
+    m_pSceneMgr->setAmbientLight(Ogre::ColourValue(0.7f, 0.7f, 0.7f));
+
+    //    m_pRSQ = m_pSceneMgr->createRayQuery(Ray());
+    //    m_pRSQ->setQueryMask(OGRE_HEAD_MASK);
+
+    m_pCamera = m_pSceneMgr->createCamera("GameCamera");
+    m_pCamera->setPosition(Vector3(5, 60, 60));
+    m_pCamera->lookAt(Vector3(5, 20, 0));
+    m_pCamera->setNearClipDistance(5);
+
+    m_pCamera->setAspectRatio(Real(OgreFramework::getSingletonPtr()->m_pViewport->getActualWidth()) /
+            Real(OgreFramework::getSingletonPtr()->m_pViewport->getActualHeight()));
+
+    OgreFramework::getSingletonPtr()->m_pViewport->setCamera(m_pCamera);
+
     this->worldBounds = AxisAlignedBox(Ogre::Vector3(-10000, -10000, -10000), Ogre::Vector3(10000, 10000, 10000)); //aligned box for Bullet
     this->gravityVector = Vector3(0, -9.81, 0); // gravity vector for Bullet
 
@@ -91,21 +106,6 @@ GameState::~GameState() {
 
 void GameState::enter() {
     OgreFramework::getSingletonPtr()->m_pLog->logMessage("Entering GameState...");
-
-    m_pSceneMgr->setAmbientLight(Ogre::ColourValue(0.7f, 0.7f, 0.7f));
-
-    //    m_pRSQ = m_pSceneMgr->createRayQuery(Ray());
-    //    m_pRSQ->setQueryMask(OGRE_HEAD_MASK);
-
-    m_pCamera = m_pSceneMgr->createCamera("GameCamera");
-    m_pCamera->setPosition(Vector3(5, 60, 60));
-    m_pCamera->lookAt(Vector3(5, 20, 0));
-    m_pCamera->setNearClipDistance(5);
-
-    m_pCamera->setAspectRatio(Real(OgreFramework::getSingletonPtr()->m_pViewport->getActualWidth()) /
-            Real(OgreFramework::getSingletonPtr()->m_pViewport->getActualHeight()));
-
-    OgreFramework::getSingletonPtr()->m_pViewport->setCamera(m_pCamera);
 
     buildGUI();
 
