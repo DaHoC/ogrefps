@@ -389,6 +389,8 @@ build/Debug/GNU-Linux-x86/_ext/2101680177/GameState.o: \
  /usr/local/include/OGRE/OgreSubEntity.h \
  /usr/local/include/OGRE/OgreMaterialManager.h \
  /home/dahoc/projects/ogrefps/src/SoundManager.h \
+ /home/dahoc/projects/ogrefps/src/player.h \
+ /home/dahoc/projects/ogrefps/src/keyBindings.h \
  src/includes/Collisions/include/Shapes/OgreBulletCollisionsStaticPlaneShape.h \
  src/includes/Collisions/include/OgreBulletCollisionsShape.h \
  src/includes/Collisions/include/Shapes/OgreBulletCollisionsBoxShape.h
@@ -1186,6 +1188,10 @@ src/includes/Dynamics/include/OgreBulletDynamicsConstraint.h:
 /usr/local/include/OGRE/OgreMaterialManager.h:
 
 /home/dahoc/projects/ogrefps/src/SoundManager.h:
+
+/home/dahoc/projects/ogrefps/src/player.h:
+
+/home/dahoc/projects/ogrefps/src/keyBindings.h:
 
 src/includes/Collisions/include/Shapes/OgreBulletCollisionsStaticPlaneShape.h:
 

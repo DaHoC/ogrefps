@@ -20,7 +20,7 @@ GameState::GameState() {
     m_pCamera = m_pSceneMgr->createCamera("playerCamera");
 
     firstPerson = new player(m_pSceneMgr, m_pCamera);
-    
+
     this->worldBounds = AxisAlignedBox(Ogre::Vector3(-10000, -10000, -10000), Ogre::Vector3(10000, 10000, 10000)); //aligned box for Bullet
     this->gravityVector = Vector3(0, -9.81, 0); // gravity vector for Bullet
 
@@ -53,13 +53,14 @@ GameState::GameState() {
     m_pSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(floorEnt);
 
     // add collision detection to it
-    OgreBulletCollisions::CollisionShape* Shape;
-    Shape = new OgreBulletCollisions::StaticPlaneCollisionShape(Ogre::Vector3(0, 1, 0), 0); // (normal vector, distance)
+    OgreBulletCollisions::CollisionShape* floorShape;
+    floorShape = new OgreBulletCollisions::StaticPlaneCollisionShape(Ogre::Vector3(0, 1, 0), 0); // (normal vector, distance)
     // a body is needed for the shape
     OgreBulletDynamics::RigidBody* defaultPlaneBody = new OgreBulletDynamics::RigidBody("BasePlane", mWorld);
-    defaultPlaneBody->setStaticShape(Shape, 0.1, 0.8); // (shape, restitution, friction)
+    defaultPlaneBody->setStaticShape(floorShape, 0.1, 0.8); // (shape, restitution, friction)
+
     // push the created objects to the deques
-    mShapes.push_back(Shape);
+    mShapes.push_back(floorShape);
     mBodies.push_back(defaultPlaneBody);
 
 
@@ -150,7 +151,6 @@ void GameState::createScene() {
     //        pDotSceneLoader->parseDotScene("CubeScene.xml", "General", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
     delete pDotSceneLoader;
 
-    SoundManager *soundMgr;
     soundMgr = new SoundManager;
     soundMgr->Initialize();
     int soundFireGun;
@@ -224,12 +224,12 @@ bool GameState::keyPressed(const OIS::KeyEvent &keyEventRef) {
 
     // create and throw a box if 'B' is pressed
     if (OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_B)) {
-        Vector3 size = Vector3(2,2,2); // size of the box
+        Vector3 size = Vector3(2, 2, 2); // size of the box
         // starting position of the box
         Vector3 position = (m_pCamera->getDerivedPosition() + m_pCamera->getDerivedDirection().normalisedCopy() * 10);
 
         // create an ordinary, Ogre mesh with texture
-        Entity *entity = m_pSceneMgr->createEntity(
+        Entity* entity = m_pSceneMgr->createEntity(
                 "Box" + StringConverter::toString(mNumEntitiesInstanced),
                 "Cube01.mesh");
 
@@ -243,16 +243,16 @@ bool GameState::keyPressed(const OIS::KeyEvent &keyEventRef) {
         // (Bullet 2.76 Physics SDK Manual page 18)
         entity->setMaterialName("Examples/BumpyMetal");
 
-        SceneNode *node = m_pSceneMgr->getRootSceneNode()->createChildSceneNode();
+        SceneNode* node = m_pSceneMgr->getRootSceneNode()->createChildSceneNode();
         node->attachObject(entity);
         node->scale(0.05f, 0.05f, 0.05f); // the cube is too big for us
         size *= 0.05f; // don't forget to scale down the Bullet-box too
 
         // after that create the Bullet shape with the calculated size
-        OgreBulletCollisions::BoxCollisionShape *sceneBoxShape = new OgreBulletCollisions::BoxCollisionShape(size);
+        OgreBulletCollisions::BoxCollisionShape* sceneBoxShape = new OgreBulletCollisions::BoxCollisionShape(size);
 
         // and the Bullet rigid body
-        OgreBulletDynamics::RigidBody *defaultBody = new OgreBulletDynamics::RigidBody(
+        OgreBulletDynamics::RigidBody* defaultBody = new OgreBulletDynamics::RigidBody(
                 "defaultBoxRigid" + StringConverter::toString(mNumEntitiesInstanced),
                 mWorld);
 
