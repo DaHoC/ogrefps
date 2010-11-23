@@ -9,6 +9,7 @@
 #define	PLAYER_H
 
 #include "AdvancedOgreFramework.hpp"
+#include "keyBindings.h"
 
 class player {
 public:

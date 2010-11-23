@@ -19,7 +19,9 @@ private:
 public:
     keyBindings() {
         // init with default values
-        this->keyMapping.insert(OIS::KC_W,"forward");
+        std::pair<OIS::KeyCode, std::string> move_forward = std::make_pair(OIS::KC_W,std::string("forward"));
+
+        this->keyMapping.insert(move_forward);
 
         /// @TODO: Load from XML file
 

@@ -8,8 +8,20 @@
 #include "player.h"
 
 player::player(Ogre::SceneManager* m_pSceneMgr, Ogre::Camera* m_pCamera) {
+    this->m_pSceneMgr = m_pSceneMgr;
+    this->m_pCamera = m_pCamera;
+
+    this->m_pCamera->setPosition(Ogre::Vector3(0, 5, 0));
+    this->m_pCamera->lookAt(Ogre::Vector3(5, 5, 0));
+    this->m_pCamera->setNearClipDistance(5);
+
+    this->m_pCamera->setAspectRatio(Ogre::Real(OgreFramework::getSingletonPtr()->m_pViewport->getActualWidth()) /
+            Ogre::Real(OgreFramework::getSingletonPtr()->m_pViewport->getActualHeight()));
+
+    OgreFramework::getSingletonPtr()->m_pViewport->setCamera(this->m_pCamera);
+
     // Create the camera's top node (which will only handle position).
-    this->cameraNode = m_pSceneMgr->getRootSceneNode()->createChildSceneNode();
+    this->cameraNode = this->m_pSceneMgr->getRootSceneNode()->createChildSceneNode();
     this->cameraNode->setPosition(0, 0, 0);
 
     // Create the camera's yaw node as a child of camera's top node.

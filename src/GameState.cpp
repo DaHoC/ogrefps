@@ -17,16 +17,10 @@ GameState::GameState() {
     //    m_pRSQ = m_pSceneMgr->createRayQuery(Ray());
     //    m_pRSQ->setQueryMask(OGRE_HEAD_MASK);
 
-    m_pCamera = m_pSceneMgr->createCamera("GameCamera");
-    m_pCamera->setPosition(Vector3(5, 60, 60));
-    m_pCamera->lookAt(Vector3(5, 20, 0));
-    m_pCamera->setNearClipDistance(5);
+    m_pCamera = m_pSceneMgr->createCamera("playerCamera");
 
-    m_pCamera->setAspectRatio(Real(OgreFramework::getSingletonPtr()->m_pViewport->getActualWidth()) /
-            Real(OgreFramework::getSingletonPtr()->m_pViewport->getActualHeight()));
-
-    OgreFramework::getSingletonPtr()->m_pViewport->setCamera(m_pCamera);
-
+    firstPerson = new player(m_pSceneMgr, m_pCamera);
+    
     this->worldBounds = AxisAlignedBox(Ogre::Vector3(-10000, -10000, -10000), Ogre::Vector3(10000, 10000, 10000)); //aligned box for Bullet
     this->gravityVector = Vector3(0, -9.81, 0); // gravity vector for Bullet
 
@@ -42,6 +36,7 @@ GameState::GameState() {
     mWorld->setShowDebugShapes(true); // enable it if you want to see the Bullet containers
     SceneNode *debugDrawNode = m_pSceneMgr->getRootSceneNode()->createChildSceneNode("debugDrawer", Ogre::Vector3::ZERO);
     debugDrawNode->attachObject(static_cast<SimpleRenderable *> (debugDrawer));
+
 
     // Define a floor plane mesh
     Entity* floorEnt;

@@ -12,6 +12,7 @@
 #include <OgreSubEntity.h>
 #include <OgreMaterialManager.h>
 #include "SoundManager.h"
+#include "player.h"
 
 #include "OgreBulletDynamicsRigidBody.h"				 // for OgreBullet
 #include "Shapes/OgreBulletCollisionsStaticPlaneShape.h" // for static planes
@@ -58,6 +59,9 @@ public:
 private:
     SoundManager* soundMgr;
     unsigned int audioId;
+
+    player* firstPerson;
+    
     Ogre::SceneNode* m_pOgreHeadNode;
     Ogre::Entity* m_pOgreHeadEntity;
     Ogre::MaterialPtr m_pOgreHeadMat;
