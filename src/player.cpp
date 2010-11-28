@@ -70,12 +70,12 @@ void player::roll(const Ogre::Radian& amount) {
     this->cameraRollNode->roll(amount);
 }
 
-void player::translate(Ogre::Real x, Ogre::Real y, Ogre::Real z, Ogre::SceneNode::TransformSpace ts) {
-    this->translate(Ogre::Vector3(translateVector.x, translateVector.y, translateVector.z), ts);
+void player::translate(const Ogre::Real& x, const Ogre::Real& y, Ogre::Real& z, Ogre::SceneNode::TransformSpace ts) {
+    this->translate(Ogre::Vector3(x, y, z), ts);
 //    this->cameraNode->translate(x, y, z, ts);
 }
 
-void player::translate(const Ogre::Vector3 translateVector, Ogre::SceneNode::TransformSpace ts) {
+void player::translate(const Ogre::Vector3& translateVector, Ogre::SceneNode::TransformSpace ts) {
     this->m_pCamera->moveRelative(translateVector);
 }
 
@@ -85,10 +85,6 @@ Ogre::Real player::getMoveSpeed() {
 
 Ogre::Real player::getRotateSpeed() {
     return this->rotateSpeed;
-}
-
-Ogre::Vector3 player::getTranslateVector() {
-    return this->translateVector;
 }
 
 player::~player() {

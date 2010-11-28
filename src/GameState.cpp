@@ -367,7 +367,7 @@ void GameState::moveCamera() {
     m_pCamera->moveRelative(m_TranslateVector / 10);
     */
 //    m_pCamera->moveRelative(m_TranslateVector / 10);
-    this->firstPerson->translate(m_TranslateVector / 10,Ogre::SceneNode::TS_LOCAL);
+    this->firstPerson->translate(m_TranslateVector / 10);
 }
 
 //|||||||||||||||||||||||||||||||||||||||||||||||

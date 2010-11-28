@@ -17,17 +17,16 @@ public:
     virtual ~player();
     Ogre::Real getMoveSpeed();
     Ogre::Real getRotateSpeed();
-    Ogre::Vector3 getTranslateVector();
     void pitch(const Ogre::Radian& amount);
     void yaw(const Ogre::Radian& amount);
     void roll(const Ogre::Radian& amount);
-    void translate(Ogre::Real x, Ogre::Real y, Ogre::Real z, Ogre::SceneNode::TransformSpace ts);
-    void translate(const Ogre::Vector3 translateVector, Ogre::SceneNode::TransformSpace ts);
+    void translate(const Ogre::Real& x, const Ogre::Real& y, Ogre::Real& z, Ogre::SceneNode::TransformSpace ts = Ogre::SceneNode::TS_LOCAL);
+    void translate(const Ogre::Vector3& translateVector, Ogre::SceneNode::TransformSpace ts = Ogre::SceneNode::TS_LOCAL);
     
 private:
     Ogre::Real moveSpeed;
     Ogre::Real rotateSpeed;
-    Ogre::Vector3 translateVector;
+//    Ogre::Vector3 translateVector;
 
     Ogre::SceneNode* cameraNode;
     Ogre::SceneNode* cameraYawNode;
