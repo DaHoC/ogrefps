@@ -12,7 +12,7 @@ player::player(Ogre::SceneManager* m_pSceneMgr, Ogre::Camera* m_pCamera) {
     this->m_pCamera = m_pCamera;
 
     this->m_pCamera->setPosition(Ogre::Vector3(0, 5, 0));
-    this->m_pCamera->lookAt(Ogre::Vector3(5, 5, 0));
+    this->m_pCamera->lookAt(Ogre::Vector3(0, 5, 0));
     this->m_pCamera->setNearClipDistance(5);
 
     this->m_pCamera->setAspectRatio(Ogre::Real(OgreFramework::getSingletonPtr()->m_pViewport->getActualWidth()) /
@@ -50,8 +50,8 @@ void player::pitch(const Ogre::Radian& amount) {
     // value itself does not interest us.
     Ogre::Real pitchAngleSign = this->cameraPitchNode->getOrientation().x;
 
-    // Limit the pitch between -80 degress and +80 degrees, Quake3-style.
-    if (pitchAngle > 80.0f) {
+    // Limit the pitch between -90 degress and +90 degrees, Quake3-style.
+    if (pitchAngle > 90.0f) {
         if (pitchAngleSign > 0)
             // Set orientation to 90 degrees on X-axis.
             this->cameraPitchNode->setOrientation(Ogre::Quaternion(Ogre::Math::Sqrt(0.5f), Ogre::Math::Sqrt(0.5f), 0, 0));
@@ -76,6 +76,7 @@ void player::translate(const Ogre::Real& x, const Ogre::Real& y, Ogre::Real& z, 
 }
 
 void player::translate(const Ogre::Vector3& translateVector, Ogre::SceneNode::TransformSpace ts) {
+//    this->cameraNode->translate(translateVector);
     this->m_pCamera->moveRelative(translateVector);
 }
 
