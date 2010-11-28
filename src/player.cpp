@@ -20,6 +20,9 @@ player::player(Ogre::SceneManager* m_pSceneMgr, Ogre::Camera* m_pCamera) {
 
     OgreFramework::getSingletonPtr()->m_pViewport->setCamera(this->m_pCamera);
 
+/**
+ *  @TODO: cameraNode below camerarollnode to get the correct translate orientations when moving
+ */
     // Create the camera's top node (which will only handle position).
     this->cameraNode = this->m_pSceneMgr->getRootSceneNode()->createChildSceneNode();
     this->cameraNode->setPosition(0, 0, 0);
@@ -39,7 +42,7 @@ player::player(Ogre::SceneManager* m_pSceneMgr, Ogre::Camera* m_pCamera) {
     this->rotateSpeed = 0.3f;
 }
 
-void player::pitch(const Ogre::Radian amount) {
+void player::pitch(const Ogre::Radian& amount) {
     // Angle of rotation around the X-axis.
     Ogre::Real pitchAngle = (2 * (Ogre::Degree(Ogre::Math::ACos(this->cameraPitchNode->getOrientation().w))).valueDegrees());
 
@@ -59,16 +62,21 @@ void player::pitch(const Ogre::Radian amount) {
         this->cameraPitchNode->pitch(amount);
 }
 
-void player::yaw(const Ogre::Radian amount) {
+void player::yaw(const Ogre::Radian& amount) {
     this->cameraYawNode->yaw(amount);
 }
 
-void player::roll(const Ogre::Radian amount) {
+void player::roll(const Ogre::Radian& amount) {
     this->cameraRollNode->roll(amount);
 }
 
 void player::translate(Ogre::Real x, Ogre::Real y, Ogre::Real z, Ogre::SceneNode::TransformSpace ts) {
-    this->cameraNode->translate(x, y, z, ts);
+    this->translate(Ogre::Vector3(translateVector.x, translateVector.y, translateVector.z), ts);
+//    this->cameraNode->translate(x, y, z, ts);
+}
+
+void player::translate(const Ogre::Vector3 translateVector, Ogre::SceneNode::TransformSpace ts) {
+    this->m_pCamera->moveRelative(translateVector);
 }
 
 Ogre::Real player::getMoveSpeed() {

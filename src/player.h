@@ -18,10 +18,11 @@ public:
     Ogre::Real getMoveSpeed();
     Ogre::Real getRotateSpeed();
     Ogre::Vector3 getTranslateVector();
-    void pitch(const Ogre::Radian amount);
-    void yaw(const Ogre::Radian amount);
-    void roll(const Ogre::Radian amount);
+    void pitch(const Ogre::Radian& amount);
+    void yaw(const Ogre::Radian& amount);
+    void roll(const Ogre::Radian& amount);
     void translate(Ogre::Real x, Ogre::Real y, Ogre::Real z, Ogre::SceneNode::TransformSpace ts);
+    void translate(const Ogre::Vector3 translateVector, Ogre::SceneNode::TransformSpace ts);
     
 private:
     Ogre::Real moveSpeed;

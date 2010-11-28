@@ -291,8 +291,10 @@ bool GameState::mouseMoved(const OIS::MouseEvent &evt) {
     if (OgreFramework::getSingletonPtr()->m_pTrayMgr->injectMouseMove(evt)) return true;
 
     if (m_bRMouseDown) {
-        m_pCamera->yaw(Degree(evt.state.X.rel * -0.1f));
-        m_pCamera->pitch(Degree(evt.state.Y.rel * -0.1f));
+        this->firstPerson->yaw(Degree(evt.state.X.rel * -0.1f));
+        this->firstPerson->pitch(Degree(evt.state.Y.rel * -0.1f));
+//        m_pCamera->yaw(Degree(evt.state.X.rel * -0.1f));
+//        m_pCamera->pitch(Degree(evt.state.Y.rel * -0.1f));
     }
 
     return true;
@@ -359,9 +361,13 @@ void GameState::onLeftPressed(const OIS::MouseEvent &evt) {
 //|||||||||||||||||||||||||||||||||||||||||||||||
 
 void GameState::moveCamera() {
+    /*
     if (OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_LSHIFT))
         m_pCamera->moveRelative(m_TranslateVector);
     m_pCamera->moveRelative(m_TranslateVector / 10);
+    */
+//    m_pCamera->moveRelative(m_TranslateVector / 10);
+    this->firstPerson->translate(m_TranslateVector / 10,Ogre::SceneNode::TS_LOCAL);
 }
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
