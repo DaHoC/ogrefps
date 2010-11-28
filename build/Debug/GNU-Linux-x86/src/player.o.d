@@ -377,7 +377,8 @@ build/Debug/GNU-Linux-x86/src/player.o: src/player.cpp src/player.h \
  src/includes/Dynamics/include/OgreBulletDynamicsPreRequisites.h \
  src/includes/Dynamics/include/OgreBulletDynamicsConstraint.h \
  /usr/local/include/bullet/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.h \
- /usr/local/include/bullet/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h
+ /usr/local/include/bullet/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h \
+ src/keyBindings.h
 
 src/player.h:
 
@@ -1156,3 +1157,5 @@ src/includes/Dynamics/include/OgreBulletDynamicsConstraint.h:
 /usr/local/include/bullet/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.h:
 
 /usr/local/include/bullet/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h:
+
+src/keyBindings.h:
