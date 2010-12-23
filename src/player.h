@@ -17,6 +17,7 @@ public:
     virtual ~player();
     Ogre::Real getMoveSpeed();
     Ogre::Real getRotateSpeed();
+    Ogre::Camera* getCamera();
     void pitch(const Ogre::Radian& amount);
     void yaw(const Ogre::Radian& amount);
     void roll(const Ogre::Radian& amount);

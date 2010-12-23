@@ -290,12 +290,12 @@ bool GameState::keyReleased(const OIS::KeyEvent &keyEventRef) {
 bool GameState::mouseMoved(const OIS::MouseEvent &evt) {
     if (OgreFramework::getSingletonPtr()->m_pTrayMgr->injectMouseMove(evt)) return true;
 
-    if (m_bRMouseDown) {
+//    if (m_bRMouseDown) {
         this->firstPerson->yaw(Degree(evt.state.X.rel * -0.1f));
         this->firstPerson->pitch(Degree(evt.state.Y.rel * -0.1f));
 //        m_pCamera->yaw(Degree(evt.state.X.rel * -0.1f));
 //        m_pCamera->pitch(Degree(evt.state.Y.rel * -0.1f));
-    }
+//    }
 
     return true;
 }
@@ -331,6 +331,10 @@ bool GameState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
 
+/**
+ * @TODO: This method crashes, @fixme
+ * @param evt
+ */
 void GameState::onLeftPressed(const OIS::MouseEvent &evt) {
     if (m_pCurrentObject) {
         m_pCurrentObject->showBoundingBox(false);
@@ -381,10 +385,12 @@ void GameState::getInput() {
             m_TranslateVector.x = m_MoveScale;
 
         if (OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_W))
-            m_TranslateVector.z = -m_MoveScale;
+            m_TranslateVector.z = this->firstPerson->getCamera()->getDerivedDirection().z * m_MoveScale;
+//            m_TranslateVector.z = -m_MoveScale;
 
         if (OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_S))
-            m_TranslateVector.z = m_MoveScale;
+            m_TranslateVector.z = this->firstPerson->getCamera()->getDerivedDirection().z * -m_MoveScale;
+//            m_TranslateVector.z = m_MoveScale;
     }
 }
 
