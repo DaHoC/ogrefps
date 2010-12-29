@@ -371,7 +371,7 @@ void GameState::moveCamera() {
     m_pCamera->moveRelative(m_TranslateVector / 10);
     */
 //    m_pCamera->moveRelative(m_TranslateVector / 10);
-    this->firstPerson->translate(m_TranslateVector / 10);
+    this->firstPerson->translate(m_TranslateVector / 10, Ogre::SceneNode::TS_LOCAL);
 }
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
@@ -385,12 +385,12 @@ void GameState::getInput() {
             m_TranslateVector.x = m_MoveScale;
 
         if (OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_W))
-            m_TranslateVector.z = this->firstPerson->getCamera()->getDerivedDirection().z * m_MoveScale;
-//            m_TranslateVector.z = -m_MoveScale;
+//            m_TranslateVector.z = this->firstPerson->getCamera()->getDerivedDirection().z * m_MoveScale;
+            m_TranslateVector.z = -m_MoveScale;
 
         if (OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_S))
-            m_TranslateVector.z = this->firstPerson->getCamera()->getDerivedDirection().z * -m_MoveScale;
-//            m_TranslateVector.z = m_MoveScale;
+//            m_TranslateVector.z = this->firstPerson->getCamera()->getDerivedDirection().z * -m_MoveScale;
+            m_TranslateVector.z = m_MoveScale;
     }
 }
 

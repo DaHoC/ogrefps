@@ -40,6 +40,7 @@ player::player(Ogre::SceneManager* m_pSceneMgr, Ogre::Camera* m_pCamera) {
     this->rotateSpeed = 0.3f;
 }
 
+/// @TODO: Do this via quaternion
 void player::pitch(const Ogre::Radian& amount) {
     // Angle of rotation around the X-axis.
     /// @TODO: Correct angle, the rotation is not around the center (but around x-axis??)
@@ -61,17 +62,20 @@ void player::pitch(const Ogre::Radian& amount) {
         this->cameraPitchNode->pitch(amount);
 }
 
-Ogre::Camera* player::getCamera() {
-    return this->m_pCamera;
-}
-
+/// @TODO: Do this via quaternion
 void player::yaw(const Ogre::Radian& amount) {
     this->cameraYawNode->yaw(amount);
 }
 
+/// @TODO: Do this via quaternion
 void player::roll(const Ogre::Radian& amount) {
     this->cameraRollNode->roll(amount);
 }
+
+Ogre::Camera* player::getCamera() {
+    return this->m_pCamera;
+}
+
 /**
  * @TODO: move relative to yaw (node), a means -z in yaw nodes coordinates
  * @param x
@@ -80,15 +84,15 @@ void player::roll(const Ogre::Radian& amount) {
  * @param ts
  */
 void player::translate(const Ogre::Real& x, const Ogre::Real& y, Ogre::Real& z, Ogre::SceneNode::TransformSpace ts) {
-//    this->translate(Ogre::Vector3(x, 0., z), ts);
-//    this->translate(Ogre::Vector3(x, y, z), ts);
-    this->cameraNode->translate(x, y, z, ts);
+    this->translate(Ogre::Vector3(x, y, z), ts); // forward to correct function
+//    this->cameraNode->translate(x, y, z, ts);
 }
 
 void player::translate(const Ogre::Vector3& translateVector, Ogre::SceneNode::TransformSpace ts) {
-    Ogre::Vector3* tVector = new Ogre::Vector3(this->m_pCamera->getDerivedDirection().x, this->m_pCamera->getDerivedDirection().y, this->m_pCamera->getDerivedDirection().z);
-    Ogre::Quaternion* rotAroundArbitratyAxis = new Ogre::Quaternion(0,0,0,1);
-    this->cameraNode->translate(*tVector,ts);
+//    Ogre::Vector3* forwardViewVector = new Ogre::Vector3(this->m_pCamera->getDerivedDirection().x, this->m_pCamera->getDerivedDirection().y, this->m_pCamera->getDerivedDirection().z);
+//    Ogre::Quaternion* rotAroundArbitratyAxis = new Ogre::Quaternion(0,0,0,1);
+//    this->cameraNode->translate(*tVector, ts);
+    this->cameraRollNode->translate(translateVector, ts);
 //    this->cameraNode->translate(translateVector, ts);
 }
 

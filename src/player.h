@@ -11,6 +11,8 @@
 #include "AdvancedOgreFramework.hpp"
 #include "keyBindings.h"
 
+//using namespace Ogre;
+
 class player {
 public:
     player(Ogre::SceneManager* m_pSceneMgr, Ogre::Camera* m_pCamera);
