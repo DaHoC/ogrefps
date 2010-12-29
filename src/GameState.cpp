@@ -14,8 +14,6 @@ GameState::GameState() {
 
     m_pSceneMgr->setAmbientLight(Ogre::ColourValue(0.7f, 0.7f, 0.7f));
 
-    //    m_pRSQ = m_pSceneMgr->createRayQuery(Ray());
-    //    m_pRSQ->setQueryMask(OGRE_HEAD_MASK);
 
     m_pCamera = m_pSceneMgr->createCamera("playerCamera");
 
@@ -336,13 +334,15 @@ bool GameState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
  * @param evt
  */
 void GameState::onLeftPressed(const OIS::MouseEvent &evt) {
+    m_pRSQ = m_pSceneMgr->createRayQuery(Ray());
+    m_pRSQ->setQueryMask(OGRE_HEAD_MASK);
+
     if (m_pCurrentObject) {
         m_pCurrentObject->showBoundingBox(false);
         m_pCurrentEntity->getSubEntity(1)->setMaterial(m_pOgreHeadMat);
     }
 
-    Ogre::Ray mouseRay = m_pCamera->getCameraToViewportRay(OgreFramework::getSingletonPtr()->m_pMouse->getMouseState().X.abs / float(evt.state.width),
-            OgreFramework::getSingletonPtr()->m_pMouse->getMouseState().Y.abs / float(evt.state.height));
+    Ogre::Ray mouseRay = m_pCamera->getCameraToViewportRay(OgreFramework::getSingletonPtr()->m_pMouse->getMouseState().X.abs / float(evt.state.width), OgreFramework::getSingletonPtr()->m_pMouse->getMouseState().Y.abs / float(evt.state.height));
     m_pRSQ->setRay(mouseRay);
     m_pRSQ->setSortByDistance(true);
 
