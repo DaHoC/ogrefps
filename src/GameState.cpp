@@ -1,5 +1,7 @@
 //|||||||||||||||||||||||||||||||||||||||||||||||
 
+#include <OgreBullet/Dynamics/OgreBulletDynamicsWorld.h>
+
 #include "GameState.hpp"
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
@@ -14,10 +16,6 @@ GameState::GameState() {
 
     m_pSceneMgr->setAmbientLight(Ogre::ColourValue(0.7f, 0.7f, 0.7f));
 
-    m_pCamera = m_pSceneMgr->createCamera("playerCamera");
-
-    this->firstPerson = new player(m_pSceneMgr, m_pCamera);
-
     this->worldBounds = AxisAlignedBox(Ogre::Vector3(-10000, -10000, -10000), Ogre::Vector3(10000, 10000, 10000)); //aligned box for Bullet
     this->gravityVector = Vector3(0, -9.81, 0); // gravity vector for Bullet
 
@@ -25,15 +23,16 @@ GameState::GameState() {
     // Start Bullet
     this->mWorld = new OgreBulletDynamics::DynamicsWorld(m_pSceneMgr, this->worldBounds, this->gravityVector);
 
+//    this->mWorld->getBulletDynamicsWorld()->setGravity(btVector3(1,0,1)); // I can't believe this works!!!
+
     // add Debug info display tool
     debugDrawer = new OgreBulletCollisions::DebugDrawer();
     debugDrawer->setDrawWireframe(true); // we want to see the Bullet containers
 
-    mWorld->setDebugDrawer(debugDrawer);
-    mWorld->setShowDebugShapes(true); // enable it if you want to see the Bullet containers
-    SceneNode *debugDrawNode = m_pSceneMgr->getRootSceneNode()->createChildSceneNode("debugDrawer", Ogre::Vector3::ZERO);
-    debugDrawNode->attachObject(static_cast<SimpleRenderable *> (debugDrawer));
-
+    this->mWorld->setDebugDrawer(debugDrawer);
+    this->mWorld->setShowDebugShapes(true); // enable it if you want to see the Bullet containers
+    SceneNode* debugDrawNode = m_pSceneMgr->getRootSceneNode()->createChildSceneNode("debugDrawer", Ogre::Vector3::ZERO);
+    debugDrawNode->attachObject(static_cast<SimpleRenderable*> (debugDrawer));
 
     // Define a floor plane mesh
     Entity* floorEnt;
@@ -53,7 +52,7 @@ GameState::GameState() {
     OgreBulletCollisions::CollisionShape* floorShape;
     floorShape = new OgreBulletCollisions::StaticPlaneCollisionShape(Ogre::Vector3(0, 1, 0), 0); // (normal vector, distance)
     // a body is needed for the shape
-    OgreBulletDynamics::RigidBody* defaultPlaneBody = new OgreBulletDynamics::RigidBody("BasePlane", mWorld);
+    OgreBulletDynamics::RigidBody* defaultPlaneBody = new OgreBulletDynamics::RigidBody("FloorPlaneShape", this->mWorld);
     defaultPlaneBody->setStaticShape(floorShape, 0.1, 0.8); // (shape, restitution, friction)
 
     // push the created objects to the deques
@@ -62,7 +61,6 @@ GameState::GameState() {
 
 
     this->m_MoveSpeed = 0.1f;
-    this->m_RotateSpeed = 0.3f;
 
     this->m_bLMouseDown = false;
     this->m_bRMouseDown = false;
@@ -96,11 +94,16 @@ GameState::~GameState() {
 }
 
 /// @TODO: implement scene & level loader
+/// @TODO: unloadLevel: detach and destroy nodes & entities using e.g. SceneManager::destroyEntity and destroyChildNode
 bool GameState::loadLevel(unsigned short levelNum) {
     DotSceneLoader* pDotSceneLoader = new DotSceneLoader();
-
-    pDotSceneLoader->parseDotScene("testLevel.xml", "testLevel", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
+    switch(levelNum) {
+        case 0:
+            pDotSceneLoader->parseDotScene("testLevel.xml", "testLevel", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
+            break;
+    }
     //        pDotSceneLoader->parseDotScene("CubeScene.xml", "General", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
+
     delete pDotSceneLoader;
 }
 
@@ -153,8 +156,19 @@ void GameState::createScene() {
 
     this->loadLevel((unsigned short)0);
 
-//    m_pCamera->setNearClipDistance(0.1); // already set in player class
+    m_pSceneMgr->destroyAllCameras();
 
+    m_pCamera = m_pSceneMgr->createCamera("playerCamera");
+
+    this->firstPerson = new player(m_pSceneMgr, m_pCamera);
+
+
+//    m_pCamera = m_pSceneMgr->getCamera("playerCamera");
+//    m_pCamera = m_pSceneMgr->createCamera("playerCamera");
+//    m_pSceneMgr->getCamera("playerCamera")->detachFromParent();
+//    this->firstPerson = new player(m_pSceneMgr, m_pCamera);
+
+    /*
     soundMgr = new SoundManager;
     soundMgr->Initialize();
     int soundFireGun;
@@ -163,7 +177,7 @@ void GameState::createScene() {
 
     int channelFireGun;
     soundMgr->PlaySound(soundFireGun, m_pSceneMgr->getRootSceneNode(), &channelFireGun);
-    /*
+
         m_pSceneMgr->getEntity("Cube01")->setQueryFlags(CUBE_MASK);
         m_pSceneMgr->getEntity("Cube02")->setQueryFlags(CUBE_MASK);
         m_pSceneMgr->getEntity("Cube03")->setQueryFlags(CUBE_MASK);
@@ -230,7 +244,7 @@ bool GameState::keyPressed(const OIS::KeyEvent &keyEventRef) {
     if (OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_B)) {
         Vector3 size = Vector3(2, 2, 2); // size of the box
         // starting position of the box
-        Vector3 position = (m_pCamera->getDerivedPosition() + m_pCamera->getDerivedDirection().normalisedCopy() * 10);
+        Vector3 position = (this->firstPerson->getCamera()->getDerivedPosition() + m_pCamera->getDerivedDirection().normalisedCopy() * 10);
 
         // create an ordinary, Ogre mesh with texture
         Entity* entity = m_pSceneMgr->createEntity(
@@ -270,8 +284,7 @@ bool GameState::keyPressed(const OIS::KeyEvent &keyEventRef) {
 
         mNumEntitiesInstanced++;
 
-        defaultBody->setLinearVelocity(
-                m_pCamera->getDerivedDirection().normalisedCopy() * 7.0f); // shooting speed
+        defaultBody->setLinearVelocity(this->firstPerson->getCamera()->getDerivedDirection().normalisedCopy() * 7.0f); // shooting speed
 
         // push the created objects to the dequese
         mShapes.push_back(sceneBoxShape);

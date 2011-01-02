@@ -470,10 +470,10 @@ void DotSceneLoader::processCamera(rapidxml::xml_node<>* XMLNode, Ogre::SceneNod
     // Process clipping (?)
     pElement = XMLNode->first_node("clipping");
     if (pElement) {
-        Ogre::Real nearDist = getAttribReal(pElement, "near");
+        Ogre::Real nearDist = getAttribReal(pElement, "nearPlaneDist", Ogre::Real(0.1f));
         pCamera->setNearClipDistance(nearDist);
 
-        Ogre::Real farDist = getAttribReal(pElement, "far");
+        Ogre::Real farDist = getAttribReal(pElement, "farPlaneDist");
         pCamera->setFarClipDistance(farDist);
     }
 
@@ -864,8 +864,9 @@ void DotSceneLoader::processClipping(rapidxml::xml_node<>* XMLNode) {
     //! @todo Implement this
 
     // Process attributes
-    Ogre::Real fNear = getAttribReal(XMLNode, "near", 0);
-    Ogre::Real fFar = getAttribReal(XMLNode, "far", 1);
+    Ogre::Real fNear = getAttribReal(XMLNode, "nearPlaneDist", Ogre::Real(0.1f));
+    std::cout << "NEAR CLIPPING DISTANCE: " << fNear << std::endl;
+    Ogre::Real fFar = getAttribReal(XMLNode, "farPlaneDist", Ogre::Real(1.0f));
 }
 
 void DotSceneLoader::processLightRange(rapidxml::xml_node<>* XMLNode, Ogre::Light *pLight) {

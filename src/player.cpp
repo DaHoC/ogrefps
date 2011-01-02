@@ -13,7 +13,7 @@ player::player(Ogre::SceneManager* m_pSceneMgr, Ogre::Camera* m_pCamera) {
 
     this->m_pCamera->setPosition(Ogre::Vector3(0, 5, 0));
     this->m_pCamera->lookAt(Ogre::Vector3(0, 5, 0));
-    this->m_pCamera->setNearClipDistance(0.1);
+    this->m_pCamera->setNearClipDistance(0.1f);
 
     this->m_pCamera->setAspectRatio(Ogre::Real(OgreFramework::getSingletonPtr()->m_pViewport->getActualWidth()) / Ogre::Real(OgreFramework::getSingletonPtr()->m_pViewport->getActualHeight()));
 

@@ -33,7 +33,7 @@ private:
     Ogre::Real rotateSpeed;
 //    Ogre::Vector3 translateVector;
 
-    Ogre::SceneNode* cameraNode;
+    Ogre::SceneNode* cameraNode; // Can be used later to define the ground / direction of gravity
     Ogre::SceneNode* cameraYawNode;
     Ogre::SceneNode* cameraPitchNode;
     Ogre::SceneNode* cameraRollNode;
