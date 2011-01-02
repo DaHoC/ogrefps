@@ -25,8 +25,10 @@ public:
     void roll(const Ogre::Radian& amount);
     void translate(const Ogre::Real& x, const Ogre::Real& y, Ogre::Real& z, Ogre::SceneNode::TransformSpace ts = Ogre::SceneNode::TS_LOCAL);
     void translate(const Ogre::Vector3& translateVector, Ogre::SceneNode::TransformSpace ts = Ogre::SceneNode::TS_LOCAL);
-    
+
 private:
+    Ogre::Quaternion rotationsQuaternion;
+
     Ogre::Real moveSpeed;
     Ogre::Real rotateSpeed;
 //    Ogre::Vector3 translateVector;

@@ -18,11 +18,6 @@
       <itemPath>src/player.h</itemPath>
       <itemPath>/home/dahoc/projects/ogrefps/src/rapidxml.hpp</itemPath>
     </logicalFolder>
-    <logicalFolder name="ResourceFiles"
-                   displayName="Resource Files"
-                   projectFiles="true"
-                   kind="SOURCE_LOGICAL_FOLDER">
-    </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true"
@@ -52,6 +47,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>src</Elem>
+    <Elem>media</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

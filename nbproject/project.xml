@@ -12,6 +12,7 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>src</sourceRootElem>
+                <sourceRootElem>media</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>Debug</confElem>
