@@ -1,23 +1,14 @@
-//|||||||||||||||||||||||||||||||||||||||||||||||
 
 #include "PauseState.hpp"
 
-//|||||||||||||||||||||||||||||||||||||||||||||||
-
 using namespace Ogre;
 
-//|||||||||||||||||||||||||||||||||||||||||||||||
-
-PauseState::PauseState()
-{
+PauseState::PauseState() {
     m_bQuit         = false;
     m_FrameEvent    = Ogre::FrameEvent();
 }
 
-//|||||||||||||||||||||||||||||||||||||||||||||||
-
-void PauseState::enter()
-{
+void PauseState::enter() {
     OgreFramework::getSingletonPtr()->m_pLog->logMessage("Entering PauseState...");
 
     m_pSceneMgr = OgreFramework::getSingletonPtr()->m_pRoot->createSceneManager(ST_GENERIC, "PauseSceneMgr");
@@ -45,16 +36,9 @@ void PauseState::enter()
     createScene();
 }
 
-//|||||||||||||||||||||||||||||||||||||||||||||||
+void PauseState::createScene() {}
 
-void PauseState::createScene()
-{
-}
-
-//|||||||||||||||||||||||||||||||||||||||||||||||
-
-void PauseState::exit()
-{
+void PauseState::exit() {
     OgreFramework::getSingletonPtr()->m_pLog->logMessage("Leaving PauseState...");
 
     m_pSceneMgr->destroyCamera(m_pCamera);
@@ -66,12 +50,8 @@ void PauseState::exit()
     OgreFramework::getSingletonPtr()->m_pTrayMgr->setListener(0);
 }
 
-//|||||||||||||||||||||||||||||||||||||||||||||||
-
-bool PauseState::keyPressed(const OIS::KeyEvent &keyEventRef)
-{
-    if(OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_ESCAPE))
-    {
+bool PauseState::keyPressed(const OIS::KeyEvent &keyEventRef) {
+    if(OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_ESCAPE)) {
         m_bQuit = true;
         return true;
     }
@@ -81,57 +61,38 @@ bool PauseState::keyPressed(const OIS::KeyEvent &keyEventRef)
     return true;
 }
 
-//|||||||||||||||||||||||||||||||||||||||||||||||
-
-bool PauseState::keyReleased(const OIS::KeyEvent &keyEventRef)
-{
+bool PauseState::keyReleased(const OIS::KeyEvent &keyEventRef) {
     OgreFramework::getSingletonPtr()->keyReleased(keyEventRef);
 
     return true;
 }
 
-//|||||||||||||||||||||||||||||||||||||||||||||||
-
-bool PauseState::mouseMoved(const OIS::MouseEvent &evt)
-{
+bool PauseState::mouseMoved(const OIS::MouseEvent &evt) {
     if(OgreFramework::getSingletonPtr()->m_pTrayMgr->injectMouseMove(evt)) return true;
     return true;
 }
 
-//|||||||||||||||||||||||||||||||||||||||||||||||
-
-bool PauseState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
-{
+bool PauseState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id) {
     if(OgreFramework::getSingletonPtr()->m_pTrayMgr->injectMouseDown(evt, id)) return true;
     return true;
 }
 
-//|||||||||||||||||||||||||||||||||||||||||||||||
-
-bool PauseState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
-{
+bool PauseState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id) {
     if(OgreFramework::getSingletonPtr()->m_pTrayMgr->injectMouseUp(evt, id)) return true;
     return true;
 }
 
-//|||||||||||||||||||||||||||||||||||||||||||||||
-
-void PauseState::update(double timeSinceLastFrame)
-{
+void PauseState::update(double timeSinceLastFrame) {
     m_FrameEvent.timeSinceLastFrame = timeSinceLastFrame;
     OgreFramework::getSingletonPtr()->m_pTrayMgr->frameRenderingQueued(m_FrameEvent);
 
-    if(m_bQuit == true)
-    {
+    if(m_bQuit == true) {
         popAppState();
         return;
     }
 }
 
-//|||||||||||||||||||||||||||||||||||||||||||||||
-
-void PauseState::buttonHit(OgreBites::Button *button)
-{
+void PauseState::buttonHit(OgreBites::Button *button) {
     if(button->getName() == "ExitBtn")
         OgreFramework::getSingletonPtr()->m_pTrayMgr->showYesNoDialog("Sure?", "Really leave?");
     else if(button->getName() == "BackToGameBtn")
@@ -140,14 +101,9 @@ void PauseState::buttonHit(OgreBites::Button *button)
         popAllAndPushAppState(findByName("MenuState"));
 }
 
-//|||||||||||||||||||||||||||||||||||||||||||||||
-
-void PauseState::yesNoDialogClosed(const Ogre::DisplayString& question, bool yesHit)
-{
+void PauseState::yesNoDialogClosed(const Ogre::DisplayString& question, bool yesHit) {
     if(yesHit == true)
         shutdown();
     else
         OgreFramework::getSingletonPtr()->m_pTrayMgr->closeDialog();
 }
-
-//|||||||||||||||||||||||||||||||||||||||||||||||

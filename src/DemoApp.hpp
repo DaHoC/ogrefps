@@ -1,29 +1,19 @@
-//|||||||||||||||||||||||||||||||||||||||||||||||
 
 #ifndef OGRE_DEMO_HPP
 #define OGRE_DEMO_HPP
 
-//|||||||||||||||||||||||||||||||||||||||||||||||
-
 #include "AdvancedOgreFramework.hpp"
 #include "AppStateManager.hpp"
 
-//|||||||||||||||||||||||||||||||||||||||||||||||
-
-class DemoApp
-{
+class DemoApp {
 public:
-	DemoApp();
-	~DemoApp();
+    DemoApp();
+    ~DemoApp();
 
-	void startDemo();
+    void startDemo();
 
 private:
-	AppStateManager*	m_pAppStateManager;
+    AppStateManager* m_pAppStateManager;
 };
 
-//|||||||||||||||||||||||||||||||||||||||||||||||
-
 #endif
-
-//|||||||||||||||||||||||||||||||||||||||||||||||
