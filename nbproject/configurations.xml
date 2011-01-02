@@ -174,5 +174,60 @@
         </linkerTool>
       </compileType>
     </conf>
+    <conf name="DebugWithProfiling" type="1">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>2</platform>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>/usr/local/include/OGRE</pElem>
+            <pElem>/usr/local/include/OIS</pElem>
+            <pElem>/usr/local/include/boost</pElem>
+            <pElem>/usr/local/include/fmodex</pElem>
+            <pElem>/usr/local/include/bullet</pElem>
+            <pElem>/usr/local/include/bullet/BulletDynamics</pElem>
+            <pElem>/usr/local/include/bullet/BulletCollision</pElem>
+            <pElem>/usr/local/include/bullet/BulletMultiThreaded</pElem>
+            <pElem>/usr/local/include/bullet/BulletSoftBody</pElem>
+            <pElem>/usr/local/include/bullet/LinearMath</pElem>
+            <pElem>/usr/local/include/bullet/ConvexDecomposition</pElem>
+            <pElem>/usr/local/include/bullet/GIMPACTUtils</pElem>
+            <pElem>src/includes/Collisions/include</pElem>
+            <pElem>src/includes/Dynamics/include</pElem>
+          </incDir>
+          <commandLine>-pg</commandLine>
+          <preprocessorList>
+            <Elem>_DEBUG</Elem>
+          </preprocessorList>
+        </ccTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>/usr/local/lib/OGRE</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibLibItem>OgreMain</linkerLibLibItem>
+            <linkerLibLibItem>OIS</linkerLibLibItem>
+            <linkerLibLibItem>OgreTerrain</linkerLibLibItem>
+            <linkerLibLibItem>OgrePaging</linkerLibLibItem>
+            <linkerLibLibItem>OgreRTShaderSystem</linkerLibLibItem>
+            <linkerLibLibItem>OgreProperty</linkerLibLibItem>
+            <linkerLibLibItem>CEGUIBase</linkerLibLibItem>
+            <linkerLibLibItem>fmodex</linkerLibLibItem>
+            <linkerLibLibItem>LinearMath</linkerLibLibItem>
+            <linkerLibLibItem>BulletCollision</linkerLibLibItem>
+            <linkerLibLibItem>BulletDynamics</linkerLibLibItem>
+            <linkerLibLibItem>BulletMultiThreaded</linkerLibLibItem>
+            <linkerLibLibItem>BulletSoftBody</linkerLibLibItem>
+            <linkerLibLibItem>BulletSoftBodySolvers_CPU</linkerLibLibItem>
+            <linkerLibLibItem>ConvexDecomposition</linkerLibLibItem>
+            <linkerLibLibItem>OgreBulletCol</linkerLibLibItem>
+            <linkerLibLibItem>OgreBulletDyn</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+    </conf>
   </confs>
 </configurationDescriptor>

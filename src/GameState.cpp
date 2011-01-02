@@ -14,7 +14,6 @@ GameState::GameState() {
 
     m_pSceneMgr->setAmbientLight(Ogre::ColourValue(0.7f, 0.7f, 0.7f));
 
-
     m_pCamera = m_pSceneMgr->createCamera("playerCamera");
 
     this->firstPerson = new player(m_pSceneMgr, m_pCamera);
@@ -96,6 +95,15 @@ GameState::~GameState() {
     delete mWorld;
 }
 
+/// @TODO: implement scene & level loader
+bool GameState::loadLevel(unsigned short levelNum) {
+    DotSceneLoader* pDotSceneLoader = new DotSceneLoader();
+
+    pDotSceneLoader->parseDotScene("testLevel.xml", "testLevel", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
+    //        pDotSceneLoader->parseDotScene("CubeScene.xml", "General", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
+    delete pDotSceneLoader;
+}
+
 //|||||||||||||||||||||||||||||||||||||||||||||||
 
 void GameState::enter() {
@@ -143,11 +151,9 @@ void GameState::createScene() {
 
     m_pSceneMgr->setSkyBox(true, "darkSea/darkSeaSkyBox");
 
-    m_pCamera->setNearClipDistance(0.1);
-    DotSceneLoader* pDotSceneLoader = new DotSceneLoader();
-    pDotSceneLoader->parseDotScene("testLevel.xml", "testLevel", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
-    //        pDotSceneLoader->parseDotScene("CubeScene.xml", "General", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
-    delete pDotSceneLoader;
+    this->loadLevel((unsigned short)0);
+
+//    m_pCamera->setNearClipDistance(0.1); // already set in player class
 
     soundMgr = new SoundManager;
     soundMgr->Initialize();

@@ -9,12 +9,12 @@
 #define	KEYBINDINGS_H
 
 /**
- @TODO: Different modes (walk...), parse from xml file, default mapping*/
+ * @TODO: Different modes (walk...), parse from xml file, default mapping
+ */
 class keyBindings {
 
 private:
     std::map<OIS::KeyCode, std::string> keyMapping;
-
 
 public:
     keyBindings() {
@@ -25,6 +25,10 @@ public:
 
         /// @TODO: Load from XML file
 
+    }
+
+    std::string getActionForKey(const OIS::KeyCode &keyCode) {
+        return this->keyMapping.at(keyCode);
     }
 
 };

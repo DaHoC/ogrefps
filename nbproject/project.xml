@@ -17,6 +17,7 @@
             <confList>
                 <confElem>Debug</confElem>
                 <confElem>Release</confElem>
+                <confElem>DebugWithProfiling</confElem>
             </confList>
         </data>
     </configuration>

@@ -55,6 +55,7 @@ public:
     void itemSelected(OgreBites::SelectMenu* menu);
 
     void update(double timeSinceLastFrame);
+    bool loadLevel(unsigned short levelNum);
 
 private:
     SoundManager* soundMgr;
