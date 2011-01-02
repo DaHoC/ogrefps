@@ -11,7 +11,7 @@
 
 #include <OgreSubEntity.h>
 #include <OgreMaterialManager.h>
-#include "SoundManager.h"
+// #include "SoundManager.h"
 #include "player.h"
 
 #include "OgreBulletDynamicsRigidBody.h"				 // for OgreBullet
@@ -58,8 +58,8 @@ public:
     bool loadLevel(unsigned short levelNum);
 
 private:
-    SoundManager* soundMgr;
-    unsigned int audioId;
+//    SoundManager* soundMgr;
+//    unsigned int audioId;
 
     player* firstPerson;
     
@@ -85,7 +85,7 @@ private:
 
     // Bullet physics stuff
     Ogre::Vector3 gravityVector;
-    AxisAlignedBox worldBounds;
+    Ogre::AxisAlignedBox worldBounds;
     OgreBulletDynamics::DynamicsWorld* mWorld; // OgreBullet World
     OgreBulletCollisions::DebugDrawer* debugDrawer;
     unsigned int mNumEntitiesInstanced;

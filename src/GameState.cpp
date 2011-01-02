@@ -100,6 +100,8 @@ bool GameState::loadLevel(unsigned short levelNum) {
     switch(levelNum) {
         case 0:
             pDotSceneLoader->parseDotScene("testLevel.xml", "testLevel", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
+            /// @TODO add collision detection
+            // m_pSceneMgr->getSceneNode("bridge")
             break;
     }
     //        pDotSceneLoader->parseDotScene("CubeScene.xml", "General", m_pSceneMgr, m_pSceneMgr->getRootSceneNode());
@@ -156,7 +158,7 @@ void GameState::createScene() {
 
     this->loadLevel((unsigned short)0);
 
-    m_pSceneMgr->destroyAllCameras();
+    m_pSceneMgr->destroyAllCameras(); // We do not want to load the player camera from the dotsceneloader, we need to set it up in the code (because the camera is encapsulated in different scene nodes for easier rotation and translation handling)
 
     m_pCamera = m_pSceneMgr->createCamera("playerCamera");
 
@@ -168,16 +170,26 @@ void GameState::createScene() {
 //    m_pSceneMgr->getCamera("playerCamera")->detachFromParent();
 //    this->firstPerson = new player(m_pSceneMgr, m_pCamera);
 
-    /*
+/*
     soundMgr = new SoundManager;
     soundMgr->Initialize();
-    int soundFireGun;
+    SceneNode soundNode(m_pSceneMgr,"soundNode");
+    soundNode.setPosition(0,0,0);
+    int soundFireGun = 0;
+    int channelSoundFireGun = 0;
+    soundMgr->Set3DMinMaxDistance(channelSoundFireGun,0,1000);
     String* soundLocation = new String("/home/dahoc/projects/ogrefps/media/sounds/Octopus.wav");
     soundFireGun = soundMgr->CreateSound(*soundLocation);
+//    soundFireGun = soundMgr->CreateLoopedSound(String("Octopus.wav"));
+    soundMgr->PlaySound(soundFireGun,&soundNode,&channelSoundFireGun);
+*/
 
-    int channelFireGun;
-    soundMgr->PlaySound(soundFireGun, m_pSceneMgr->getRootSceneNode(), &channelFireGun);
+//    String* soundLocation = new String("/home/dahoc/projects/ogrefps/media/sounds/Octopus.wav");
+//    soundFireGun = soundMgr->CreateSound(*soundLocation);
 
+//    int channelFireGun;
+//    soundMgr->PlaySound(soundFireGun, m_pSceneMgr->getRootSceneNode(), &channelFireGun);
+/*
         m_pSceneMgr->getEntity("Cube01")->setQueryFlags(CUBE_MASK);
         m_pSceneMgr->getEntity("Cube02")->setQueryFlags(CUBE_MASK);
         m_pSceneMgr->getEntity("Cube03")->setQueryFlags(CUBE_MASK);

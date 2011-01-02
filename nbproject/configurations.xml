@@ -13,7 +13,6 @@
       <itemPath>/home/dahoc/projects/ogrefps/src/GameState.hpp</itemPath>
       <itemPath>/home/dahoc/projects/ogrefps/src/MenuState.hpp</itemPath>
       <itemPath>/home/dahoc/projects/ogrefps/src/PauseState.hpp</itemPath>
-      <itemPath>/home/dahoc/projects/ogrefps/src/SoundManager.h</itemPath>
       <itemPath>src/keyBindings.h</itemPath>
       <itemPath>src/player.h</itemPath>
       <itemPath>/home/dahoc/projects/ogrefps/src/rapidxml.hpp</itemPath>
@@ -29,7 +28,6 @@
       <itemPath>/home/dahoc/projects/ogrefps/src/GameState.cpp</itemPath>
       <itemPath>/home/dahoc/projects/ogrefps/src/MenuState.cpp</itemPath>
       <itemPath>/home/dahoc/projects/ogrefps/src/PauseState.cpp</itemPath>
-      <itemPath>/home/dahoc/projects/ogrefps/src/SoundManager.cpp</itemPath>
       <itemPath>/home/dahoc/projects/ogrefps/src/main.cpp</itemPath>
       <itemPath>src/player.cpp</itemPath>
     </logicalFolder>
@@ -63,7 +61,6 @@
             <pElem>/usr/local/include/OGRE</pElem>
             <pElem>/usr/local/include/OIS</pElem>
             <pElem>/usr/local/include/boost</pElem>
-            <pElem>/usr/local/include/fmodex</pElem>
             <pElem>/usr/local/include/bullet</pElem>
             <pElem>/usr/local/include/bullet/BulletDynamics</pElem>
             <pElem>/usr/local/include/bullet/BulletCollision</pElem>
@@ -91,7 +88,6 @@
             <linkerLibLibItem>OgreRTShaderSystem</linkerLibLibItem>
             <linkerLibLibItem>OgreProperty</linkerLibLibItem>
             <linkerLibLibItem>CEGUIBase</linkerLibLibItem>
-            <linkerLibLibItem>fmodex</linkerLibLibItem>
             <linkerLibLibItem>LinearMath</linkerLibLibItem>
             <linkerLibLibItem>BulletCollision</linkerLibLibItem>
             <linkerLibLibItem>BulletDynamics</linkerLibLibItem>
@@ -121,7 +117,6 @@
             <pElem>/usr/local/include/OGRE</pElem>
             <pElem>/usr/local/include/OIS</pElem>
             <pElem>/usr/local/include/boost</pElem>
-            <pElem>/usr/local/include/fmodex</pElem>
             <pElem>/usr/local/include/bullet</pElem>
             <pElem>/usr/local/include/bullet/BulletDynamics</pElem>
             <pElem>/usr/local/include/bullet/BulletCollision</pElem>
@@ -159,7 +154,6 @@
             <linkerLibLibItem>OgreRTShaderSystem</linkerLibLibItem>
             <linkerLibLibItem>OgreProperty</linkerLibLibItem>
             <linkerLibLibItem>CEGUIBase</linkerLibLibItem>
-            <linkerLibLibItem>fmodex</linkerLibLibItem>
             <linkerLibLibItem>LinearMath</linkerLibLibItem>
             <linkerLibLibItem>BulletCollision</linkerLibLibItem>
             <linkerLibLibItem>BulletDynamics</linkerLibLibItem>
