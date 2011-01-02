@@ -43,54 +43,26 @@ player::player(Ogre::SceneManager* m_pSceneMgr, Ogre::Camera* m_pCamera) {
 
 // rotate around x-axis translated by current player node position
 void player::pitch(const Ogre::Radian& amount) {
-    /// @TODO: Limit amount to less or equal +- 90 degrees
-    Ogre::Vector3 rotationAxis = this->cameraPitchNode->getOrientation() * Ogre::Vector3::UNIT_X;
-//    rotationAxis.y = 0.;
-//    rotationAxis.z = 0.;
-    this->rotationsQuaternion = Ogre::Quaternion(amount, rotationAxis);
-//    this->rotationsQuaternion.y = 0.;
-//    this->rotationsQuaternion.z = 0.;
-    this->rotationsQuaternion.normalise(); // remember to normalise to avoid unwanted & unprecise results
-    this->cameraPitchNode->rotate(this->rotationsQuaternion, Ogre::SceneNode::TS_LOCAL);
-}
-/*
-    /// @TODO: Correct angle, the rotation is not around the center (but around x-axis??)
+    // angle of rotation around the x-axis
     Ogre::Real pitchAngle = (2 * (Ogre::Degree(Ogre::Math::ACos(this->cameraPitchNode->getOrientation().w))).valueDegrees());
-
-    // Just to determine the sign of the angle we pick up above, the
-    // value itself does not interest us.
     Ogre::Real pitchAngleSign = this->cameraPitchNode->getOrientation().x;
 
-    /// @TODO: @fixme: Limit the pitch between > -90 degress and < +90 degrees, Quake3-style.
+    // limit the pitch between -90 degress and +90 degrees, Quake3-style.
     if (pitchAngle > 90.0f) {
-        if (pitchAngleSign > 0)
-            // Set orientation to 90 degrees on X-axis.
-            this->cameraPitchNode->setOrientation(Ogre::Quaternion(Ogre::Math::Sqrt(0.5f), Ogre::Math::Sqrt(0.5f), 0, 0));
-        else if (pitchAngleSign < 0)
-            // Sets orientation to -90 degrees on X-axis.
-            this->cameraPitchNode->setOrientation(Ogre::Quaternion(Ogre::Math::Sqrt(0.5f), -Ogre::Math::Sqrt(0.5f), 0, 0));
-    } else
-        this->cameraPitchNode->pitch(amount);
-*/
+        this->cameraPitchNode->setOrientation(Ogre::Quaternion(Ogre::Math::Sqrt(0.5f), ((pitchAngleSign > 0) ? Ogre::Math::Sqrt(0.5f) : -Ogre::Math::Sqrt(0.5f)) , 0, 0)); // set orientation to +-90 degrees on x-axis
+    } else {
+        this->cameraPitchNode->pitch(amount, Ogre::SceneNode::TS_LOCAL);
+    }
+}
 
 // rotate around y-axis translated by current player node position
 void player::yaw(const Ogre::Radian& amount) {
-    Ogre::Vector3 rotationAxis = this->cameraYawNode->getOrientation() * Ogre::Vector3::UNIT_Y;
-//    rotationAxis.x = 0.;
-//    rotationAxis.z = 0.;
-    this->rotationsQuaternion = Ogre::Quaternion(amount, rotationAxis);
-//    this->rotationsQuaternion.x = 0.;
-//    this->rotationsQuaternion.z = 0.;
-    this->rotationsQuaternion.normalise(); // remember to normalise to avoid unwanted & unprecise results
-    this->cameraYawNode->rotate(this->rotationsQuaternion, Ogre::SceneNode::TS_LOCAL);
+    this->cameraYawNode->yaw(amount, Ogre::SceneNode::TS_LOCAL);
 }
 
 // rotate around z-axis translated by current player node position
 void player::roll(const Ogre::Radian& amount) {
-    Ogre::Vector3 rotationAxis = this->cameraRollNode->getOrientation() * Ogre::Vector3::UNIT_Z;
-    this->rotationsQuaternion = Ogre::Quaternion(amount, rotationAxis);
-    this->rotationsQuaternion.normalise(); // remember to normalise to avoid unwanted & unprecise results
-    this->cameraRollNode->rotate(this->rotationsQuaternion, Ogre::SceneNode::TS_LOCAL);
+    this->cameraRollNode->roll(amount, Ogre::SceneNode::TS_LOCAL);
 }
 
 Ogre::Camera* player::getCamera() {
@@ -99,22 +71,11 @@ Ogre::Camera* player::getCamera() {
 
 void player::translate(const Ogre::Real& x, const Ogre::Real& y, Ogre::Real& z, Ogre::SceneNode::TransformSpace ts) {
     this->translate(Ogre::Vector3(x, y, z), ts); // forward to correct function
-//    this->cameraNode->translate(x, y, z, ts);
 }
 
 /// @TODO: Move cameraRollNode or m_pCamera directly, but yaw/pitch/roll using quaternions on the same node (because otherwise/currently, the rotation center does not move along)
 void player::translate(const Ogre::Vector3& translateVector, Ogre::SceneNode::TransformSpace ts) {
-//    Ogre::Vector3* forwardViewVector = new Ogre::Vector3(this->m_pCamera->getDerivedDirection().x, this->m_pCamera->getDerivedDirection().y, this->m_pCamera->getDerivedDirection().z);
-//    Ogre::Quaternion* rotAroundArbitratyAxis = new Ogre::Quaternion(0,0,0,1);
-//    this->cameraNode->translate(*tVector, ts);
-    // move relative to yaw (node), forward means -z in yaw nodes coordinates
-    this->cameraNode->translate(this->cameraYawNode->getOrientation() *
-                             this->cameraPitchNode->getOrientation() *
-                             translateVector,
-                             Ogre::SceneNode::TS_LOCAL);
-
-//    this->cameraYawNode->translate(translateVector, ts);
-//    this->cameraNode->translate(translateVector, ts);
+    this->cameraNode->translate(this->cameraYawNode->getOrientation() * this->cameraPitchNode->getOrientation() * this->cameraRollNode->getOrientation() * translateVector, ts);
 }
 
 Ogre::Real player::getMoveSpeed() {

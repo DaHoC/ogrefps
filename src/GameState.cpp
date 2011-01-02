@@ -17,7 +17,7 @@ GameState::GameState() {
 
     m_pCamera = m_pSceneMgr->createCamera("playerCamera");
 
-    firstPerson = new player(m_pSceneMgr, m_pCamera);
+    this->firstPerson = new player(m_pSceneMgr, m_pCamera);
 
     this->worldBounds = AxisAlignedBox(Ogre::Vector3(-10000, -10000, -10000), Ogre::Vector3(10000, 10000, 10000)); //aligned box for Bullet
     this->gravityVector = Vector3(0, -9.81, 0); // gravity vector for Bullet
@@ -288,12 +288,8 @@ bool GameState::keyReleased(const OIS::KeyEvent &keyEventRef) {
 bool GameState::mouseMoved(const OIS::MouseEvent &evt) {
     if (OgreFramework::getSingletonPtr()->m_pTrayMgr->injectMouseMove(evt)) return true;
 
-//    if (m_bRMouseDown) {
-        this->firstPerson->yaw(Degree(evt.state.X.rel * -0.1f));
-        this->firstPerson->pitch(Degree(evt.state.Y.rel * -0.1f));
-//        m_pCamera->yaw(Degree(evt.state.X.rel * -0.1f));
-//        m_pCamera->pitch(Degree(evt.state.Y.rel * -0.1f));
-//    }
+    this->firstPerson->yaw(Degree(evt.state.X.rel * -0.1f));
+    this->firstPerson->pitch(Degree(evt.state.Y.rel * -0.1f));
 
     return true;
 }
@@ -365,19 +361,14 @@ void GameState::onLeftPressed(const OIS::MouseEvent &evt) {
 //|||||||||||||||||||||||||||||||||||||||||||||||
 
 void GameState::moveCamera() {
-    /*
-    if (OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_LSHIFT))
-        m_pCamera->moveRelative(m_TranslateVector);
-    m_pCamera->moveRelative(m_TranslateVector / 10);
-    */
-//    m_pCamera->moveRelative(m_TranslateVector / 10);
+//    if (OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_LSHIFT))
     this->firstPerson->translate(m_TranslateVector / 10);
 }
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
 
 void GameState::getInput() {
-    if (m_bSettingsMode == false) {
+//    if (m_bSettingsMode == false) {
         if (OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_A))
             m_TranslateVector.x = -m_MoveScale;
 
@@ -385,13 +376,11 @@ void GameState::getInput() {
             m_TranslateVector.x = m_MoveScale;
 
         if (OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_W))
-//            m_TranslateVector.z = this->firstPerson->getCamera()->getDerivedDirection().z * m_MoveScale;
             m_TranslateVector.z = -m_MoveScale;
 
         if (OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_S))
-//            m_TranslateVector.z = this->firstPerson->getCamera()->getDerivedDirection().z * -m_MoveScale;
             m_TranslateVector.z = m_MoveScale;
-    }
+//    }
 }
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
