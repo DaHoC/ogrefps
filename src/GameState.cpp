@@ -55,12 +55,11 @@ GameState::GameState() {
     OgreBulletDynamics::RigidBody* defaultPlaneBody = new OgreBulletDynamics::RigidBody("FloorPlaneShape", this->mWorld);
     defaultPlaneBody->setStaticShape(floorShape, 0.1, 0.8); // (shape, restitution, friction)
 
-    // push the created objects to the deques
-    mShapes.push_back(floorShape);
-    mBodies.push_back(defaultPlaneBody);
-
+    this->colCol = new collisionCollector();
+    this->colCol->addCollisionObject(floorShape, defaultPlaneBody);
 
     this->m_MoveSpeed = 0.1f;
+    this->m_RotateSpeed = 0.3f;
 
     this->m_bLMouseDown = false;
     this->m_bRMouseDown = false;
@@ -74,20 +73,6 @@ GameState::GameState() {
 // Clean up
 
 GameState::~GameState() {
-    // OgreBullet physic delete - RigidBodies
-    std::deque<OgreBulletDynamics::RigidBody *>::iterator itBody = mBodies.begin();
-    while (mBodies.end() != itBody) {
-        delete *itBody;
-        ++itBody;
-    }
-    // OgreBullet physic delete - Shapes
-    std::deque<OgreBulletCollisions::CollisionShape *>::iterator itShape = mShapes.begin();
-    while (mShapes.end() != itShape) {
-        delete *itShape;
-        ++itShape;
-    }
-    mBodies.clear();
-    mShapes.clear();
     delete mWorld->getDebugDrawer();
     mWorld->setDebugDrawer(0);
     delete mWorld;
@@ -162,7 +147,7 @@ void GameState::createScene() {
 
     m_pCamera = m_pSceneMgr->createCamera("playerCamera");
 
-    this->firstPerson = new player(m_pSceneMgr, m_pCamera);
+    this->firstPerson = new player(m_pSceneMgr, m_pCamera, mWorld, colCol);
 
 
 //    m_pCamera = m_pSceneMgr->getCamera("playerCamera");
@@ -298,9 +283,7 @@ bool GameState::keyPressed(const OIS::KeyEvent &keyEventRef) {
 
         defaultBody->setLinearVelocity(this->firstPerson->getCamera()->getDerivedDirection().normalisedCopy() * 7.0f); // shooting speed
 
-        // push the created objects to the dequese
-        mShapes.push_back(sceneBoxShape);
-        mBodies.push_back(defaultBody);
+        this->colCol->addCollisionObject(sceneBoxShape, defaultBody);
     }
 
 

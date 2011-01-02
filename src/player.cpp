@@ -6,10 +6,13 @@
  */
 
 #include "player.h"
+#include "collisionCollector.h"
 
-player::player(Ogre::SceneManager* m_pSceneMgr, Ogre::Camera* m_pCamera) {
+player::player(Ogre::SceneManager* m_pSceneMgr, Ogre::Camera* m_pCamera, OgreBulletDynamics::DynamicsWorld* mWorld, collisionCollector* colCol) {
     this->m_pSceneMgr = m_pSceneMgr;
     this->m_pCamera = m_pCamera;
+    this->mWorld = mWorld;
+    this->colCol = colCol;
 
     this->m_pCamera->setPosition(Ogre::Vector3(0, 5, 0));
     this->m_pCamera->lookAt(Ogre::Vector3(0, 5, 0));
@@ -34,6 +37,27 @@ player::player(Ogre::SceneManager* m_pSceneMgr, Ogre::Camera* m_pCamera) {
     this->cameraRollNode = this->cameraPitchNode->createChildSceneNode();
 
     this->cameraRollNode->attachObject(this->m_pCamera);
+
+    /// @TODO: add collision detection to player
+    Ogre::Vector3 playerSize = Ogre::Vector3(2,2,2);
+    OgreBulletCollisions::BoxCollisionShape* playerShape = new OgreBulletCollisions::BoxCollisionShape(playerSize);
+
+//    OgreBulletCollisions::CollisionShape* playerShape = new OgreBulletCollisions::BoxCollisionShape(0.5f);
+    // a body is needed for the shape
+    OgreBulletDynamics::RigidBody* playerBody = new OgreBulletDynamics::RigidBody("PlayerBody", mWorld);
+
+    playerBody->setShape(cameraNode,
+                               playerShape,
+                               0.6f,         // dynamic body restitution
+                               0.6f,         // dynamic body friction
+                               1.0f,          // dynamic bodymass
+                               this->cameraNode->getPosition(),      // starting position of the player
+                               this->cameraNode->getOrientation());// orientation of the player
+
+//    playerBody->setStaticShape(playerShape, 0.1, 0.8); // (shape, restitution, friction)
+
+    // push the created objects to the deques
+    this->colCol->addCollisionObject(playerShape, playerBody);
 
     this->moveSpeed = 0.1f;
     this->rotateSpeed = 0.3f;

@@ -3,7 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1">
         <file>
             <url>src/player.h</url>
-            <line>29</line>
+            <line>30</line>
+        </file>
+        <file>
+            <url>src/GameState.cpp</url>
+            <line>60</line>
+            <line>61</line>
+            <line>386</line>
+            <line>389</line>
+            <line>392</line>
+            <line>395</line>
         </file>
     </editor-bookmarks>
 </project-private>

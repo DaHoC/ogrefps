@@ -13,6 +13,7 @@
       <itemPath>/home/dahoc/projects/ogrefps/src/GameState.hpp</itemPath>
       <itemPath>/home/dahoc/projects/ogrefps/src/MenuState.hpp</itemPath>
       <itemPath>/home/dahoc/projects/ogrefps/src/PauseState.hpp</itemPath>
+      <itemPath>src/collisionCollector.h</itemPath>
       <itemPath>src/keyBindings.h</itemPath>
       <itemPath>src/player.h</itemPath>
       <itemPath>/home/dahoc/projects/ogrefps/src/rapidxml.hpp</itemPath>

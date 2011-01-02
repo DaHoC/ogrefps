@@ -10,12 +10,13 @@
 
 #include "AdvancedOgreFramework.hpp"
 #include "keyBindings.h"
+#include "collisionCollector.h"
 
 //using namespace Ogre;
 
 class player {
 public:
-    player(Ogre::SceneManager* m_pSceneMgr, Ogre::Camera* m_pCamera);
+    player(Ogre::SceneManager* m_pSceneMgr, Ogre::Camera* m_pCamera, OgreBulletDynamics::DynamicsWorld* mWorld, collisionCollector* colCol);
     virtual ~player();
     Ogre::Real getMoveSpeed();
     Ogre::Real getRotateSpeed();
@@ -28,7 +29,6 @@ public:
 
 private:
     Ogre::Quaternion rotationsQuaternion;
-
     Ogre::Real moveSpeed;
     Ogre::Real rotateSpeed;
 //    Ogre::Vector3 translateVector;
@@ -38,6 +38,8 @@ private:
     Ogre::SceneNode* cameraPitchNode;
     Ogre::SceneNode* cameraRollNode;
 
+    collisionCollector* colCol;
+    OgreBulletDynamics::DynamicsWorld* mWorld;
     Ogre::Camera* m_pCamera;
     Ogre::SceneManager* m_pSceneMgr;
 };

@@ -13,10 +13,10 @@
 #include <OgreMaterialManager.h>
 // #include "SoundManager.h"
 #include "player.h"
-
-#include "OgreBulletDynamicsRigidBody.h"				 // for OgreBullet
+#include "collisionCollector.h"
+#include "OgreBulletDynamicsRigidBody.h" // for OgreBullet
 #include "Shapes/OgreBulletCollisionsStaticPlaneShape.h" // for static planes
-#include "Shapes/OgreBulletCollisionsBoxShape.h"		 // for Boxes
+#include "Shapes/OgreBulletCollisionsBoxShape.h" // for Boxes
 
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
@@ -62,7 +62,8 @@ private:
 //    unsigned int audioId;
 
     player* firstPerson;
-    
+    collisionCollector* colCol;
+
     Ogre::SceneNode* m_pOgreHeadNode;
     Ogre::Entity* m_pOgreHeadEntity;
     Ogre::MaterialPtr m_pOgreHeadMat;
@@ -89,9 +90,6 @@ private:
     OgreBulletDynamics::DynamicsWorld* mWorld; // OgreBullet World
     OgreBulletCollisions::DebugDrawer* debugDrawer;
     unsigned int mNumEntitiesInstanced;
-
-    std::deque<OgreBulletDynamics::RigidBody *> mBodies;
-    std::deque<OgreBulletCollisions::CollisionShape *> mShapes;
 
 };
 
